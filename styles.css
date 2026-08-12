@@ -287,18 +287,21 @@ textarea {
   inset: 0;
   content: "";
   background:
-    linear-gradient(90deg, rgba(30, 30, 30, 0.7), rgba(30, 30, 30, 0.34) 56%, rgba(30, 30, 30, 0.06)),
-    linear-gradient(0deg, rgba(30, 30, 30, 0.42), transparent 46%);
+    linear-gradient(90deg, rgba(30, 30, 30, 0.66), rgba(30, 30, 30, 0.26) 47%, rgba(30, 30, 30, 0.04) 76%),
+    linear-gradient(0deg, rgba(30, 30, 30, 0.42), rgba(30, 30, 30, 0.02) 52%);
 }
 
 .hero-media {
-  position: absolute;
   inset: 0;
   min-height: 100%;
   transform: translate3d(0, var(--hero-y, 0px), 0) scale(var(--hero-scale, 1.04));
   transform-origin: center;
   transition: transform 120ms linear;
   will-change: transform;
+}
+
+.hero > .hero-media {
+  position: absolute;
 }
 
 .hero-inner {
@@ -311,13 +314,13 @@ textarea {
 }
 
 .hero h1 {
-  max-width: 1050px;
+  max-width: 940px;
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(4.2rem, 11vw, 10.5rem);
+  font-size: clamp(4rem, 8.8vw, 8rem);
   font-weight: 500;
   letter-spacing: 0;
-  line-height: 0.86;
+  line-height: 0.9;
   clip-path: inset(0 0 0 0);
 }
 
@@ -492,6 +495,11 @@ textarea {
 .division-copy > span {
   color: var(--gold);
   font-weight: 800;
+  grid-row: 1 / span 4;
+}
+
+.division-copy > :not(span) {
+  grid-column: 2;
 }
 
 .division-copy h3,
@@ -499,7 +507,7 @@ textarea {
 .internal-card h2 {
   margin: 0 0 0.5rem;
   font-family: var(--serif);
-  font-size: clamp(1.65rem, 2.8vw, 2.65rem);
+  font-size: clamp(1.65rem, 2.55vw, 2.45rem);
   font-weight: 500;
   line-height: 1.05;
 }
@@ -516,6 +524,7 @@ textarea {
   font-size: 0.85rem !important;
   font-weight: 800;
   letter-spacing: 0.04em;
+  line-height: 1.35;
   text-transform: uppercase;
 }
 
@@ -549,9 +558,9 @@ textarea {
 
 .figure-row strong {
   font-family: var(--serif);
-  font-size: clamp(2.35rem, 4.2vw, 4.45rem);
+  font-size: clamp(2rem, 2.7vw, 3.05rem);
   font-weight: 500;
-  line-height: 0.95;
+  line-height: 1;
 }
 
 .figure-row span {
@@ -767,6 +776,8 @@ textarea {
     linear-gradient(135deg, rgba(30, 30, 30, 0.28), rgba(165, 42, 42, 0.08)),
     linear-gradient(20deg, rgba(176, 141, 87, 0.22), transparent 55%),
     #e4dacb;
+  background-position: center;
+  background-size: cover;
   transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -778,57 +789,77 @@ textarea {
     radial-gradient(circle at 24% 24%, rgba(255, 250, 241, 0.35), transparent 20%),
     linear-gradient(120deg, rgba(30, 30, 30, 0.08), transparent 38%),
     repeating-linear-gradient(45deg, rgba(30, 30, 30, 0.035) 0, rgba(30, 30, 30, 0.035) 1px, transparent 1px, transparent 22px);
+  opacity: 0.28;
   transition: transform 850ms cubic-bezier(0.22, 1, 0.36, 1), opacity 520ms ease;
   transform-origin: center;
 }
 
 .image-frame span {
   position: absolute;
-  left: 1rem;
-  bottom: 1rem;
-  z-index: 1;
-  max-width: calc(100% - 2rem);
-  padding: 0.35rem 0.55rem;
-  background: rgba(247, 244, 238, 0.72);
-  color: rgba(30, 30, 30, 0.56);
-  font-size: 0.7rem;
-  font-weight: 800;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 .image-hero {
-  background-color: #867565;
+  background-image:
+    linear-gradient(135deg, rgba(30, 30, 30, 0.02), rgba(165, 42, 42, 0.03)),
+    url("assets/hero-campus-journey.jpg");
+  background-position: center 48%;
 }
 
 .image-global {
-  background-color: #b7a58b;
+  background-image:
+    linear-gradient(135deg, rgba(30, 30, 30, 0.06), rgba(165, 42, 42, 0.06)),
+    url("assets/program-global-learning.jpg");
+  background-position: center;
 }
 
 .image-china {
-  background-color: #a99a86;
+  background-image:
+    linear-gradient(135deg, rgba(30, 30, 30, 0.06), rgba(165, 42, 42, 0.04)),
+    url("assets/program-study-china.jpg");
+  background-position: center;
 }
 
 .image-explore {
-  background-color: #c1b296;
+  background-image:
+    linear-gradient(135deg, rgba(30, 30, 30, 0.06), rgba(165, 42, 42, 0.04)),
+    url("assets/program-explore-china.jpg");
+  background-position: center;
 }
 
 .image-gba {
-  background-color: #b9aa94;
+  background-image:
+    linear-gradient(135deg, rgba(30, 30, 30, 0.06), rgba(165, 42, 42, 0.05)),
+    url("assets/journey-greater-bay-area.jpg");
+  background-position: center;
 }
 
 .image-story-one {
-  background-color: #9d8e7d;
+  background-image:
+    linear-gradient(0deg, rgba(30, 30, 30, 0.54), rgba(30, 30, 30, 0.08)),
+    url("assets/program-study-china.jpg");
 }
 
 .image-story-two {
-  background-color: #a68b78;
+  background-image:
+    linear-gradient(0deg, rgba(30, 30, 30, 0.54), rgba(30, 30, 30, 0.08)),
+    url("assets/journey-greater-bay-area.jpg");
 }
 
 .image-story-three {
-  background-color: #b19d83;
+  background-image:
+    linear-gradient(0deg, rgba(30, 30, 30, 0.54), rgba(30, 30, 30, 0.08)),
+    url("assets/program-global-learning.jpg");
 }
 
 .image-story-four {
-  background-color: #918573;
+  background-image:
+    linear-gradient(0deg, rgba(30, 30, 30, 0.54), rgba(30, 30, 30, 0.08)),
+    url("assets/program-explore-china.jpg");
 }
 
 .modal {
@@ -1132,7 +1163,7 @@ textarea {
   }
 
   .hero h1 {
-    font-size: 4.2rem;
+    font-size: clamp(3.4rem, 16vw, 4.1rem);
   }
 
   .hero-inner {
@@ -1153,6 +1184,12 @@ textarea {
   .contact-details p {
     grid-template-columns: 1fr;
     gap: 0.35rem;
+  }
+
+  .division-copy > span,
+  .division-copy > :not(span) {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .figure-row {
