@@ -161,6 +161,8 @@ const translations = {
   }
 };
 
+document.documentElement.classList.add("motion-ready");
+
 const languageButtons = document.querySelectorAll(".lang-btn");
 const menuToggle = document.querySelector(".menu-toggle");
 const navMenu = document.querySelector("#navMenu");
@@ -170,7 +172,14 @@ const modal = document.querySelector("#policyModal");
 const modalDialog = modal ? modal.querySelector(".modal-dialog") : null;
 const modalTitle = document.querySelector("#modalTitle");
 const modalBody = document.querySelector("#modalBody");
+const siteHeader = document.querySelector("#siteHeader");
+const heroMedia = document.querySelector(".hero-media");
+const storyStrip = document.querySelector(".story-strip");
+const sections = document.querySelectorAll(".section");
 let activeLanguage = "en";
+let ticking = false;
+
+document.body.classList.add("is-loaded");
 
 function setLanguage(language) {
   activeLanguage = language;
@@ -213,6 +222,21 @@ if (menuToggle && navMenu) {
 
 document.querySelectorAll(".nav-links a, .nav-tools a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
+});
+
+document.querySelectorAll("a[href]").forEach((link) => {
+  const href = link.getAttribute("href");
+  const isLocalPage = href && !href.startsWith("#") && !href.startsWith("mailto:") && !href.startsWith("http");
+  if (!isLocalPage) return;
+
+  link.addEventListener("click", (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target) return;
+    event.preventDefault();
+    document.body.classList.remove("is-loaded");
+    window.setTimeout(() => {
+      window.location.href = href;
+    }, 180);
+  });
 });
 
 if (form && formMessage) {
@@ -269,8 +293,55 @@ if ("IntersectionObserver" in window) {
   }, { threshold: 0.12 });
 
   revealElements.forEach((element) => observer.observe(element));
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle("is-active", entry.isIntersecting);
+    });
+  }, { threshold: 0.25 });
+
+  sections.forEach((section) => sectionObserver.observe(section));
 } else {
   revealElements.forEach((element) => element.classList.add("visible"));
+  sections.forEach((section) => section.classList.add("is-active"));
 }
 
+function updateScrollEffects() {
+  const scrollY = window.scrollY || document.documentElement.scrollTop;
+  const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
+
+  document.documentElement.style.setProperty("--scroll-progress", String(progress));
+
+  if (siteHeader) {
+    siteHeader.classList.toggle("is-scrolled", scrollY > 24);
+  }
+
+  if (heroMedia) {
+    const heroOffset = Math.min(90, scrollY * 0.12);
+    const heroScale = Math.max(1.01, 1.045 - scrollY * 0.000035);
+    document.documentElement.style.setProperty("--hero-y", `${heroOffset}px`);
+    document.documentElement.style.setProperty("--hero-scale", heroScale.toFixed(3));
+  }
+
+  if (storyStrip) {
+    const rect = storyStrip.getBoundingClientRect();
+    const centerDistance = rect.top + rect.height / 2 - window.innerHeight / 2;
+    const shift = Math.max(-42, Math.min(42, centerDistance * -0.035));
+    document.documentElement.style.setProperty("--story-shift", `${shift}px`);
+  }
+
+  ticking = false;
+}
+
+function requestScrollUpdate() {
+  if (ticking) return;
+  ticking = true;
+  window.requestAnimationFrame(updateScrollEffects);
+}
+
+window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+window.addEventListener("resize", requestScrollUpdate);
+
+updateScrollEffects();
 setLanguage("en");
