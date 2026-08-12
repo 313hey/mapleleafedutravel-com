@@ -113,7 +113,7 @@ textarea {
 
 .nav {
   width: min(1360px, calc(100% - 36px));
-  min-height: 82px;
+  min-height: 86px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -124,20 +124,39 @@ textarea {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.9rem;
   text-decoration: none;
 }
 
-.brand-mark {
-  width: 46px;
+.brand-seal {
+  width: 78px;
   height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.35rem;
+  border-right: 1px solid var(--line);
+}
+
+.brand-seal img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.brand-copy {
   display: grid;
-  place-items: center;
-  border: 1px solid rgba(165, 42, 42, 0.3);
-  color: var(--accent);
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  font-weight: 700;
+  gap: 0.18rem;
+  align-items: center;
+}
+
+.brand-wordmark {
+  width: 182px;
+  max-width: 38vw;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .brand-name {
@@ -149,7 +168,9 @@ textarea {
 .brand-sub {
   display: block;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
 }
 
 .nav-menu,
@@ -341,6 +362,7 @@ textarea {
 
 .section {
   position: relative;
+  scroll-margin-top: 96px;
   padding: clamp(5rem, 9vw, 9rem) 0;
   border-bottom: 1px solid var(--line);
 }
@@ -445,6 +467,14 @@ textarea {
 .section-intro {
   max-width: 880px;
   margin-bottom: clamp(2.4rem, 6vw, 5rem);
+}
+
+.why-section .section-intro {
+  max-width: 980px;
+}
+
+.why-section .section-intro h2 {
+  max-width: 920px;
 }
 
 .division-grid {
@@ -594,12 +624,48 @@ textarea {
 
 .reason-list {
   display: grid;
-  gap: 2.3rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
 }
 
 .reason-list article {
-  padding-top: 1.3rem;
-  border-top: 1px solid var(--line);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 250, 241, 0.26);
+}
+
+.reason-list article::before {
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.reason-list article:nth-child(1)::before {
+  content: "01";
+}
+
+.reason-list article:nth-child(2)::before {
+  content: "02";
+}
+
+.reason-list article:nth-child(3)::before {
+  content: "03";
+}
+
+.reason-list h3 {
+  max-width: 360px;
+}
+
+.reason-list p {
+  max-width: 430px;
 }
 
 .stories-section {
@@ -1051,7 +1117,7 @@ textarea {
 
   .nav-menu {
     position: absolute;
-    top: 82px;
+    top: 86px;
     left: 0;
     right: 0;
     display: none;
@@ -1114,6 +1180,14 @@ textarea {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .reason-list {
+    grid-template-columns: 1fr;
+  }
+
+  .reason-list article {
+    min-height: 220px;
+  }
+
   .story-strip {
     overflow-x: auto;
     padding-bottom: 1rem;
@@ -1145,17 +1219,22 @@ textarea {
     top: 76px;
   }
 
-  .brand-mark {
-    width: 42px;
-    height: 42px;
+  .brand {
+    gap: 0.6rem;
   }
 
-  .brand-name {
-    font-size: 0.94rem;
+  .brand-seal {
+    width: 56px;
+    height: 38px;
+    padding: 0 0.25rem 0 0;
+  }
+
+  .brand-wordmark {
+    width: 142px;
   }
 
   .brand-sub {
-    font-size: 0.75rem;
+    font-size: 0.68rem;
   }
 
   .hero {
@@ -1171,7 +1250,12 @@ textarea {
   }
 
   .section {
+    scroll-margin-top: 86px;
     padding: 4.3rem 0;
+  }
+
+  .why-section .section-intro h2 {
+    font-size: clamp(3rem, 14vw, 4.2rem);
   }
 
   .division-image,
