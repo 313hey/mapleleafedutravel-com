@@ -147,12 +147,11 @@ textarea {
 
 .brand-copy {
   display: grid;
-  gap: 0.18rem;
   align-items: center;
 }
 
 .brand-wordmark {
-  width: 182px;
+  width: 198px;
   max-width: 38vw;
   height: auto;
   display: block;
@@ -1230,7 +1229,7 @@ textarea {
   }
 
   .brand-wordmark {
-    width: 142px;
+    width: 156px;
   }
 
   .brand-sub {
