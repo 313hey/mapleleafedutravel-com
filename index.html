@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Maple Leaf Edu-Travel creates educational journeys that connect students, schools and cultures in China and around the world.">
-  <title>Maple Leaf Edu-Travel | Learning Beyond Borders</title>
+  <meta name="description" content="Maple Leaf Edu-Travel creates premium educational journeys connecting students, cultures and classrooms around the world.">
+  <title>Maple Leaf Edu-Travel | Learn Beyond Borders</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,12 +13,8 @@
   <header class="site-header" id="siteHeader">
     <nav class="nav" aria-label="Primary navigation">
       <a class="brand" href="index.html" aria-label="Maple Leaf Edu-Travel home">
-        <span class="brand-seal" aria-hidden="true">
-          <img src="assets/maple-leaf-crest-web.png" alt="">
-        </span>
-        <span class="brand-copy">
-          <img class="brand-wordmark" src="assets/ml-edu-travel-wordmark-web.png" alt="Maple Leaf Edu-Travel">
-        </span>
+        <span class="brand-seal" aria-hidden="true"><img src="assets/maple-leaf-crest-web.png" alt=""></span>
+        <span class="brand-copy"><img class="brand-wordmark" src="assets/ml-edu-travel-wordmark-web.png" alt="Maple Leaf Edu-Travel"></span>
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navMenu">
@@ -31,8 +27,8 @@
           <li><a href="#home" data-i18n="navHome">Home</a></li>
           <li><a href="about.html" data-i18n="navAbout">About</a></li>
           <li><a href="#programs" data-i18n="navPrograms">Programs</a></li>
+          <li><a href="#journeys" data-i18n="navJourneys">Journeys</a></li>
           <li><a href="#experience" data-i18n="navExperience">Experience</a></li>
-          <li><a href="#stories" data-i18n="navStories">Stories</a></li>
           <li><a href="#contact" data-i18n="navContact">Contact</a></li>
         </ul>
         <div class="nav-tools">
@@ -47,14 +43,12 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="home">
-      <div class="hero-media image-frame image-hero" role="img" aria-label="Recommended image: students beginning an international learning journey, 2400 by 1500 pixels">
-        <span data-i18n="heroImage">Recommended image 2400 x 1500</span>
-      </div>
+    <section class="hero editorial-hero" id="home">
+      <div class="hero-media image-frame image-hero" role="img" aria-label="Students beginning an international educational journey"></div>
       <div class="hero-inner reveal">
         <p class="section-number">01</p>
-        <h1 data-i18n="heroTitle">Learning Beyond Borders</h1>
-        <p class="hero-text" data-i18n="heroSubtitle">Educational journeys that connect students, schools and cultures.</p>
+        <h1 data-i18n="heroTitle">LEARN BEYOND BORDERS.</h1>
+        <p class="hero-text" data-i18n="heroSubtitle">Educational journeys connecting students, cultures and classrooms around the world.</p>
         <div class="hero-actions">
           <a class="text-link light" href="#programs" data-i18n="heroButtonOne">Explore Our Programs</a>
           <a class="text-link light" href="#contact" data-i18n="heroButtonTwo">Plan a Journey</a>
@@ -63,13 +57,17 @@
     </section>
 
     <section class="section intro-section" id="about">
-      <div class="container split-layout">
-        <p class="section-number reveal">02</p>
+      <div class="container intro-editorial">
         <div class="section-copy reveal">
+          <p class="section-number">02</p>
           <h2 data-i18n="introTitle">Educational journeys rooted in global learning.</h2>
           <p data-i18n="introText">Maple Leaf Edu-Travel connects students with schools, cultures and communities through thoughtfully designed programs in China and around the world.</p>
           <p class="quiet-note" data-i18n="introProof">Part of Maple Leaf Educational Systems.</p>
           <a class="text-link" href="about.html" data-i18n="introLink">Discover Who We Are</a>
+        </div>
+        <div class="intro-media reveal">
+          <div class="image-frame image-intro-primary"></div>
+          <div class="image-frame image-intro-detail"></div>
         </div>
       </div>
     </section>
@@ -78,89 +76,109 @@
       <div class="container">
         <div class="section-intro reveal">
           <p class="section-number">03</p>
-          <h2 data-i18n="programsTitle">Our Programs</h2>
+          <h2 data-i18n="programsTitle">Three ways to learn through travel.</h2>
         </div>
-
-        <div class="division-grid">
-          <article class="division reveal">
-            <a class="division-image image-frame image-global" href="programs.html#global" aria-label="Global Learning Journeys">
-              <span data-i18n="programImageOne">Recommended image 1600 x 1200</span>
-            </a>
-            <div class="division-copy">
+        <div class="program-cover-grid">
+          <a class="program-cover image-frame image-inbound reveal" href="programs.html#china">
+            <div>
               <span>01</span>
-              <h3 data-i18n="programOneTitle">Global Learning Journeys</h3>
-              <p data-i18n="programOneText">Immersive international programs that connect students with new cultures, classrooms and perspectives.</p>
+              <h3 data-i18n="programOneTitle">China Inbound Programs</h3>
+              <p data-i18n="programOneText">Campus immersion, language learning and cultural discovery programs for international school groups in China.</p>
+              <strong data-i18n="programExplore">Explore Programs</strong>
             </div>
-          </article>
-
-          <article class="division featured-division reveal">
-            <a class="division-image image-frame image-china" href="programs.html#china" aria-label="Study in China">
-              <span data-i18n="programImageTwo">Recommended image 1800 x 1200</span>
-            </a>
-            <div class="division-copy">
+          </a>
+          <a class="program-cover image-frame image-outbound reveal" href="programs.html#global">
+            <div>
               <span>02</span>
-              <h3 data-i18n="programTwoTitle">Study in China</h3>
-              <p data-i18n="programTwoText">Language learning, campus integration and cultural discovery programs designed for international students and schools.</p>
-              <p class="labels" data-i18n="programTwoLabels">Culture Exploration · Campus Integration · Bilingual Summer School</p>
+              <h3 data-i18n="programTwoTitle">Outbound Programs</h3>
+              <p data-i18n="programTwoText">Overseas learning journeys that introduce students to new classrooms, cities and global perspectives.</p>
+              <strong data-i18n="programExplore">Explore Programs</strong>
             </div>
-          </article>
-
-          <article class="division reveal">
-            <a class="division-image image-frame image-explore" href="programs.html#explore" aria-label="Explore China">
-              <span data-i18n="programImageThree">Recommended image 1600 x 1200</span>
-            </a>
-            <div class="division-copy">
+          </a>
+          <a class="program-cover image-frame image-domestic reveal" href="programs.html#explore">
+            <div>
               <span>03</span>
-              <h3 data-i18n="programThreeTitle">Explore China</h3>
-              <p data-i18n="programThreeText">Educational journeys through China’s cities, landscapes, history and communities.</p>
+              <h3 data-i18n="programThreeTitle">Domestic Programs</h3>
+              <p data-i18n="programThreeText">Learning journeys through China's landscapes, museums, communities and cultural heritage.</p>
+              <strong data-i18n="programExplore">Explore Programs</strong>
             </div>
-          </article>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section experience-section" id="experience">
+    <section class="section journeys-section" id="journeys">
       <div class="container">
         <div class="section-intro reveal">
           <p class="section-number">04</p>
-          <h2 data-i18n="experienceTitle">Our Experience</h2>
+          <h2 data-i18n="journeysTitle">Featured Journeys</h2>
+          <p data-i18n="journeysIntro">Representative routes that show how place, learning and cultural exchange can work together.</p>
         </div>
-        <div class="figure-row reveal">
-          <article>
-            <strong data-i18n="figureOneValue">20+ Years</strong>
-            <span data-i18n="figureOneLabel">of Educational Travel Experience</span>
+        <div class="journey-editorial-grid">
+          <article class="journey-card large image-frame image-journey-shenzhen reveal">
+            <span>Shenzhen</span>
+            <h3 data-i18n="journeyOneTitle">Innovation & Campus Life</h3>
           </article>
-          <article>
-            <strong data-i18n="figureTwoValue">20,000+ Students</strong>
-            <span data-i18n="figureTwoLabel">on Overseas Learning Programs</span>
+          <article class="journey-card image-frame image-journey-hk reveal">
+            <span>Hong Kong</span>
+            <h3 data-i18n="journeyTwoTitle">Global City Exploration</h3>
           </article>
-          <article>
-            <strong data-i18n="figureThreeValue">5,000+ Participants</strong>
-            <span data-i18n="figureThreeLabel">in China-Based Study Tours</span>
+          <article class="journey-card image-frame image-journey-inner reveal">
+            <span>Inner Mongolia</span>
+            <h3 data-i18n="journeyThreeTitle">Ecology & Cultural Immersion</h3>
           </article>
-          <article>
-            <strong data-i18n="figureFourValue">20+ Cities</strong>
-            <span data-i18n="figureFourLabel">across the Maple Leaf Education Network</span>
+          <article class="journey-card wide image-frame image-journey-gf reveal">
+            <span>Guangzhou / Foshan</span>
+            <h3 data-i18n="journeyFourTitle">Lingnan Culture & Heritage</h3>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section journey-section" id="featured">
-      <div class="container journey-layout">
-        <div class="journey-media image-frame image-gba reveal" role="img" aria-label="Recommended image: Greater Bay Area learning journey, 1800 by 1300 pixels">
-          <span data-i18n="journeyImage">Recommended image 1800 x 1300</span>
+    <section class="storytelling-section" id="experience">
+      <div class="container storytelling-layout">
+        <div class="story-visual reveal" aria-hidden="true">
+          <div class="story-layer story-layer-one active"></div>
+          <div class="story-layer story-layer-two"></div>
+          <div class="story-layer story-layer-three"></div>
+          <div class="story-layer story-layer-four"></div>
         </div>
-        <div class="journey-copy reveal">
+        <div class="story-steps">
           <p class="section-number">05</p>
-          <h2 data-i18n="journeyTitle">Greater Bay Area Study Tour</h2>
-          <p class="journey-place" data-i18n="journeyPlace">Shenzhen · Guangzhou · Foshan</p>
-          <p data-i18n="journeyText">A learning journey connecting Chinese language, campus life, innovation and Lingnan culture across three dynamic cities in southern China.</p>
-          <p class="labels" data-i18n="journeyLabels">Chinese Language · Campus Integration · Innovation · Lingnan Culture</p>
-          <div class="inline-actions">
-            <a class="text-link" href="programs.html#gba" data-i18n="journeyButtonOne">Explore This Journey</a>
-            <a class="text-link" href="programs.html" data-i18n="journeyButtonTwo">View All Programs</a>
-          </div>
+          <article class="story-step active" data-story-step="0">
+            <span>01</span>
+            <h2 data-i18n="storyStepOneTitle">Discover China</h2>
+            <p data-i18n="storyStepOneText">Students begin by reading the city through streets, campuses and everyday cultural encounters.</p>
+          </article>
+          <article class="story-step" data-story-step="1">
+            <span>02</span>
+            <h2 data-i18n="storyStepTwoTitle">Learn with Local Students</h2>
+            <p data-i18n="storyStepTwoText">Classroom exchange and buddy programs turn travel into shared learning.</p>
+          </article>
+          <article class="story-step" data-story-step="2">
+            <span>03</span>
+            <h2 data-i18n="storyStepThreeTitle">Experience Culture</h2>
+            <p data-i18n="storyStepThreeText">Workshops and guided practice help students understand tradition through participation.</p>
+          </article>
+          <article class="story-step" data-story-step="3">
+            <span>04</span>
+            <h2 data-i18n="storyStepFourTitle">Explore the Country</h2>
+            <p data-i18n="storyStepFourText">Field learning connects landscapes, history, community and reflection.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section learning-section">
+      <div class="container learning-layout">
+        <div class="learning-copy reveal">
+          <p class="section-number">06</p>
+          <h2 data-i18n="learningTitle">Travel is the setting. Learning is the journey.</h2>
+          <p data-i18n="learningText">Students observe, discuss, experiment, collaborate and reflect. Each itinerary is designed around what students will learn, not only where they will go.</p>
+        </div>
+        <div class="learning-images reveal">
+          <div class="image-frame image-learning-stem"></div>
+          <div class="image-frame image-learning-culture"></div>
         </div>
       </div>
     </section>
@@ -168,7 +186,7 @@
     <section class="section why-section" id="why">
       <div class="container">
         <div class="section-intro reveal">
-          <p class="section-number">06</p>
+          <p class="section-number">07</p>
           <h2 data-i18n="whyTitle">Why Maple Leaf Edu-Travel</h2>
         </div>
         <div class="reason-list">
@@ -188,35 +206,38 @@
       </div>
     </section>
 
-    <section class="section stories-section" id="stories">
+    <section class="section video-section" id="stories">
+      <div class="container video-layout">
+        <div class="section-intro reveal">
+          <p class="section-number">08</p>
+          <h2 data-i18n="videoTitle">Learning Happens Everywhere</h2>
+          <p data-i18n="videoText">A future video story can bring real Maple Leaf Edu-Travel footage into this editorial experience.</p>
+        </div>
+        <div class="video-frame image-frame image-video-poster reveal">
+          <button class="play-button" type="button" aria-label="Video placeholder">Play</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience-section">
       <div class="container">
         <div class="section-intro reveal">
-          <p class="section-number">07</p>
-          <h2 data-i18n="storiesTitle">Learning in Motion</h2>
-          <p data-i18n="storiesText">See how students learn, connect and grow through journeys in China and around the world.</p>
+          <p class="section-number">09</p>
+          <h2 data-i18n="experienceTitle">A Maple Leaf Education Network</h2>
         </div>
-        <div class="story-strip reveal">
-          <a class="story-cover image-frame image-story-one" href="stories.html#hong-kong">
-            <span data-i18n="storyOne">Hong Kong Summer Camp</span>
-          </a>
-          <a class="story-cover image-frame image-story-two" href="stories.html#gba-inbound">
-            <span data-i18n="storyTwo">Greater Bay Area Inbound Program</span>
-          </a>
-          <a class="story-cover image-frame image-story-three" href="stories.html#inner-mongolia">
-            <span data-i18n="storyThree">Inner Mongolia Graduation Journey</span>
-          </a>
-          <a class="story-cover image-frame image-story-four" href="stories.html#xishuangbanna">
-            <span data-i18n="storyFour">Xishuangbanna Study Tour</span>
-          </a>
+        <div class="figure-row reveal">
+          <article><strong data-i18n="figureOneValue">20+ Years</strong><span data-i18n="figureOneLabel">of Educational Travel Experience</span></article>
+          <article><strong data-i18n="figureTwoValue">20,000+ Students</strong><span data-i18n="figureTwoLabel">on Overseas Learning Programs</span></article>
+          <article><strong data-i18n="figureThreeValue">5,000+ Participants</strong><span data-i18n="figureThreeLabel">in China-Based Study Tours</span></article>
+          <article><strong data-i18n="figureFourValue">20+ Cities</strong><span data-i18n="figureFourLabel">across the Maple Leaf Education Network</span></article>
         </div>
-        <a class="text-link stories-link reveal" href="stories.html" data-i18n="storiesLink">Explore Our Stories</a>
       </div>
     </section>
 
     <section class="section cta-section" id="contact">
       <div class="container cta-layout">
         <div class="cta-copy reveal">
-          <p class="section-number">08</p>
+          <p class="section-number">10</p>
           <h2 data-i18n="ctaTitle">Plan a Journey for Your School</h2>
           <p data-i18n="ctaText">Tell us about your students, learning goals and preferred destination. We will help you shape a meaningful educational experience.</p>
           <div class="inline-actions">
@@ -246,12 +267,12 @@
     <div class="container footer-layout">
       <div>
         <h2>Maple Leaf Edu-Travel</h2>
-        <p data-i18n="footerTagline">Educational journeys that connect students, schools and cultures.</p>
+        <p data-i18n="footerTagline">Educational journeys that connect students, cultures and classrooms.</p>
       </div>
       <nav aria-label="Footer navigation">
         <a href="about.html" data-i18n="navAbout">About</a>
         <a href="programs.html" data-i18n="navPrograms">Programs</a>
-        <a href="stories.html" data-i18n="navStories">Stories</a>
+        <a href="#stories" data-i18n="navStories">Stories</a>
         <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
       <div>

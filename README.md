@@ -20,9 +20,10 @@ Then open `http://127.0.0.1:8124/index.html`.
 - `about.html` - light internal About page for group background figures
 - `programs.html` - light internal Programs page
 - `stories.html` - light internal Stories page
-- `styles.css` - visual system, responsive layout and image placeholder styling
-- `script.js` - language switching, mobile menu, reveal animation, demo form and policy modal logic
-- `assets/` - future logo and image assets
+- `styles.css` - visual system, responsive layout, editorial imagery and motion styling
+- `script.js` - language switching, mobile menu, scroll storytelling, reveal animation, demo form and policy modal logic
+- `assets/` - logo assets
+- `public/media/` - replaceable homepage photography and future video assets
 
 ## Content Policy
 
@@ -42,11 +43,20 @@ Keep the following content on internal pages or in reviewed future pages:
 
 ## Replace Logo
 
-Place the approved logo inside `assets/`, then update the `.brand-mark` element in each HTML file or replace it with an `<img>` tag.
+The header currently uses:
+
+- `assets/maple-leaf-crest-web.png`
+- `assets/ml-edu-travel-wordmark-web.png`
+
+Replace those files with approved final logo exports using the same filenames, or update the `<img>` paths in each HTML file.
 
 ## Replace Images
 
-The current site uses editorial image placeholders. Each placeholder includes a recommended size. Replace the placeholder elements with approved photos only after copyright and consent are confirmed.
+The homepage now uses temporary editorial prototype images under `public/media/`. Replace them with approved Maple Leaf photography using the same filenames where possible.
+
+See `public/media/README.md` for the full media checklist, including hero video, program images, journey images, learning images and video story assets.
+
+Only use photography and video after copyright, student consent and company approval are confirmed.
 
 ## Modify Text
 
