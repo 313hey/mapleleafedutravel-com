@@ -1,56 +1,73 @@
-# Maple Leaf Edu-Travel Static Website
+# Maple Leaf Edu-Travel Website Test
 
-This is a bilingual test website for Maple Leaf Edu-Travel, built as a pure static site with HTML, CSS and vanilla JavaScript.
+Static bilingual test website for Maple Leaf Edu-Travel.
 
 ## Open Locally
 
-Double-click `index.html` to open the site in a browser. No build step, Node.js, React, Vue or package installation is required.
+Double-click `index.html`, or open it in any modern browser.
 
-## Files
+For a local server preview:
 
-- `index.html` - page structure and default English content
-- `styles.css` - editorial visual system, responsive layout and interaction styling
-- `script.js` - EN / 中文 switching, mobile navigation, demonstration form and policy modals
-- `assets/` - reserved for approved logo and photography
-- `CNAME` - GitHub Pages custom domain
+```powershell
+python -m http.server 8124
+```
+
+Then open `http://127.0.0.1:8124/index.html`.
+
+## File Structure
+
+- `index.html` - homepage with the selected public-facing content
+- `about.html` - light internal About page for group background figures
+- `programs.html` - light internal Programs page
+- `stories.html` - light internal Stories page
+- `styles.css` - visual system, responsive layout and image placeholder styling
+- `script.js` - language switching, mobile menu, reveal animation, demo form and policy modal logic
+- `assets/` - future logo and image assets
+
+## Content Policy
+
+The homepage intentionally uses only the selected concise copy approved in the working brief. The attached English handbook was used only as a factual reference. Long handbook content should not be copied directly onto the homepage.
+
+Keep the following content on internal pages or in reviewed future pages:
+
+- Full history of Maple Leaf Educational Systems
+- Complete city and country lists
+- Nearly 100 schools, 32,000+ students and 5,000+ faculty and staff
+- Detailed Study in China formats
+- Campus facility lists
+- Full service process
+- Tourism licence details
+- Partner information
+- Long corporate descriptions
 
 ## Replace Logo
 
-The current logo is a simple `ML` placeholder. Add the approved logo to `assets/`, then replace the `.brand-mark` element in `index.html` with an image tag. Keep a clear text brand name beside it for accessibility.
+Place the approved logo inside `assets/`, then update the `.brand-mark` element in each HTML file or replace it with an `<img>` tag.
 
 ## Replace Images
 
-The site uses refined image placeholder areas to avoid copyright risk. Replace the placeholder blocks with approved photography only.
-
-Recommended sizes:
-
-- Hero image: 2200 x 1400
-- Program image: 1400 x 1200
-- Destination image: 1500 x 1100
-
-Use owned, licensed or company-approved images only.
+The current site uses editorial image placeholders. Each placeholder includes a recommended size. Replace the placeholder elements with approved photos only after copyright and consent are confirmed.
 
 ## Modify Text
 
-Most visible bilingual copy is in `script.js` inside the `translations` object. When updating wording, edit both `en` and `zh` entries.
+Homepage English and Chinese text lives in `index.html` and `script.js`. Update both the visible English fallback and the translation keys in `script.js`.
 
-## Deployment Notes
+## Deployment
 
-The site is suitable for GitHub Pages or any static host. The current GitHub Pages custom domain is:
+The current GitHub Pages setup publishes from the `gh-pages` branch. After edits:
 
-```text
-www.mapleleafedutravel.com
+```powershell
+git add .
+git commit -m "Describe the change"
+git push origin main
+git branch -f gh-pages main
+git push -f origin gh-pages
 ```
 
-For GitHub Pages, publish the root folder from the selected branch and keep the `CNAME` file in the root.
+## Still Needs Company Confirmation
 
-## Content Still Requiring Company Confirmation
-
-- Official logo and brand guidelines
-- Approved photography
+- Official logo and visual identity assets
+- Approved photography and permissions
 - Whether `info@mapleleafedutravel.com` is active
-- Final address formatting
-- Program details and itinerary wording
-- Insurance and safety wording
-- Privacy Policy and Terms of Use
-- Any public claims about schools, partners, certifications, awards or project statistics
+- Privacy Policy and Terms of Use legal review
+- Final programme naming, scope, pricing and operational responsibilities
