@@ -77,6 +77,28 @@
   display: none;
 }
 
+.rg-text-brand {
+  display: grid;
+  gap: 0.05rem;
+}
+
+.rg-logo-name {
+  color: #111;
+  font-family: var(--serif);
+  font-size: clamp(1.55rem, 2.2vw, 2rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+.rg-logo-label {
+  color: var(--rg-red-deep);
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.25em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
 .rg-hero {
   position: relative;
   min-height: 100vh;
@@ -104,7 +126,7 @@
   z-index: 0;
   background:
     linear-gradient(0deg, rgba(31, 31, 31, 0.22), rgba(31, 31, 31, 0.04)),
-    url("public/images/home/hero-main.jpg") center top / cover;
+    url("public/media/hero/hero-poster.jpg") center top / cover;
 }
 
 .rg-hero-overlay {
@@ -140,6 +162,21 @@
   text-transform: uppercase;
 }
 
+.rg-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--rg-red-deep);
+  letter-spacing: 0.28em;
+}
+
+.rg-eyebrow span {
+  display: inline-block;
+  width: 48px;
+  height: 1px;
+  background: var(--rg-gold);
+}
+
 .rg-hero h1,
 .rg-proof h2,
 .rg-section-heading h2,
@@ -154,10 +191,25 @@
 }
 
 .rg-hero h1 {
-  max-width: 1120px;
+  max-width: 1040px;
   color: #000;
-  font-size: clamp(3.8rem, 7.8vw, 7.6rem);
+  font-size: clamp(3.6rem, 7.1vw, 7rem);
   line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.rg-hero h1 em,
+.rg-hero h1 strong {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.rg-hero h1 em {
+  color: #707070;
+}
+
+.rg-hero h1 strong {
+  color: var(--rg-red-deep);
 }
 
 .rg-hero-lede {
@@ -205,6 +257,25 @@
   backdrop-filter: blur(14px);
 }
 
+.rg-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #111;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.rg-hero-secondary::after {
+  content: ">";
+  color: var(--rg-gold);
+  transition: transform 180ms ease;
+}
+
+.rg-hero-secondary:hover::after {
+  transform: translateX(4px);
+}
+
 .rg-button:hover,
 .rg-text-link:hover {
   transform: scale(1.03);
@@ -217,6 +288,21 @@
 .rg-section {
   padding: clamp(5.5rem, 10vw, 10rem) 0;
   border-bottom: 1px solid rgba(31, 31, 31, 0.1);
+}
+
+.rg-credibility {
+  padding: clamp(3rem, 7vw, 6rem) 0;
+  background: #fff;
+  border-bottom: 1px solid rgba(31, 31, 31, 0.1);
+}
+
+.rg-credibility-line {
+  margin: 0 0 2rem;
+  color: var(--rg-red-deep);
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .rg-proof-layout {
@@ -422,6 +508,53 @@
   color: rgba(255, 255, 255, 0.78);
 }
 
+.rg-experience {
+  background: #fff;
+}
+
+.rg-experience-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  gap: clamp(2rem, 7vw, 6rem);
+  align-items: center;
+}
+
+.rg-experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(31, 31, 31, 0.12);
+  border: 1px solid rgba(31, 31, 31, 0.12);
+}
+
+.rg-experience-grid div {
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+.rg-experience-grid div::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(0deg, rgba(31, 31, 31, 0.58), rgba(31, 31, 31, 0.08));
+}
+
+.rg-experience-grid span {
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .rg-contact {
   padding: clamp(5rem, 10vw, 9rem) 0;
   background:
@@ -544,6 +677,7 @@
   .rg-proof-layout,
   .rg-program-block,
   .rg-program-block.cultural,
+  .rg-experience-layout,
   .rg-contact-layout,
   .rg-footer-layout {
     grid-template-columns: 1fr;
@@ -587,7 +721,25 @@
   }
 
   .rg-hero h1 {
-    font-size: clamp(3.05rem, 14.4vw, 4.45rem);
+    font-size: clamp(2.85rem, 12.8vw, 4rem);
+    letter-spacing: -0.025em;
+  }
+
+  .rg-text-brand {
+    max-width: 270px;
+    grid-template-columns: minmax(0, auto) auto;
+    align-items: end;
+    column-gap: 0.65rem;
+  }
+
+  .rg-logo-name {
+    font-size: 1.35rem;
+  }
+
+  .rg-logo-label {
+    max-width: 90px;
+    font-size: 8px;
+    letter-spacing: 0.2em;
   }
 
   .rg-actions {
@@ -595,7 +747,8 @@
   }
 
   .rg-stat-row,
-  .rg-program-list {
+  .rg-program-list,
+  .rg-experience-grid {
     grid-template-columns: 1fr;
   }
 

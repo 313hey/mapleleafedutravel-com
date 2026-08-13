@@ -12,9 +12,9 @@
 
   <header class="site-header home-header" id="siteHeader">
     <nav class="nav" aria-label="Primary navigation">
-      <a class="brand" href="index.html" aria-label="Maple Leaf Edu-Travel home">
-        <span class="brand-seal" aria-hidden="true"><img src="assets/maple-leaf-crest-web.png" alt=""></span>
-        <span class="brand-copy"><img class="brand-wordmark" src="assets/ml-edu-travel-wordmark-web.png" alt="Maple Leaf Edu-Travel"></span>
+      <a class="brand rg-text-brand" href="index.html" aria-label="Maple Leaf Edu-Travel home">
+        <span class="rg-logo-name">Maple Leaf Edu-Travel</span>
+        <span class="rg-logo-label">Educational Journeys</span>
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navMenu">
@@ -24,10 +24,9 @@
 
       <div class="nav-menu" id="navMenu">
         <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#why">About Us</a></li>
+          <li><a href="#home" aria-current="page">Home</a></li>
           <li><a href="#programs">Programs</a></li>
-          <li><a href="programs.html">Past Programs</a></li>
+          <li><a href="#why">About Us</a></li>
           <li><a href="stories.html">Stories</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -40,42 +39,30 @@
 
   <main id="main">
     <section class="rg-hero" id="home">
-      <video class="rg-hero-video" autoplay muted playsinline poster="public/images/home/hero-main.jpg" aria-hidden="true">
+      <video class="rg-hero-video" autoplay muted playsinline poster="public/media/hero/hero-poster.jpg" aria-hidden="true">
+        <!-- Future local source: replace the CloudFront source below with public/media/hero/maple-leaf-edutravel-hero.mp4 after the official video is approved. -->
         <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4" type="video/mp4">
       </video>
       <div class="rg-hero-image" aria-hidden="true"></div>
       <div class="rg-hero-overlay" aria-hidden="true"></div>
-      <div class="container rg-hero-inner reveal">
-        <p class="rg-eyebrow">Maple Leaf Edu-Travel</p>
-        <h1>Where K-12 Education Meets Professional Travel Operations</h1>
-        <p class="rg-hero-lede">A trusted expert in educational travel, creating meaningful programs for students, schools and cultures.</p>
-        <div class="rg-actions">
+      <div class="container rg-hero-inner">
+        <p class="rg-eyebrow animate-fade-rise"><span></span>Education Beyond the Classroom</p>
+        <h1 class="animate-fade-rise">Learn <em>Beyond Borders.</em><br>Discover the World <strong>Differently.</strong></h1>
+        <p class="rg-hero-lede animate-fade-rise-delay">Educational journeys connecting students, cultures, and classrooms around the world. From school immersion to cultural discovery, every journey is designed to turn travel into meaningful learning.</p>
+        <div class="rg-actions animate-fade-rise-delay-2">
           <a class="rg-button primary" href="#programs">Explore Programs</a>
-          <a class="rg-button ghost" href="#contact">Plan a Journey</a>
+          <a class="rg-hero-secondary" href="#why">About Edu-Travel</a>
         </div>
       </div>
     </section>
 
-    <section class="rg-section rg-proof" id="why">
-      <div class="container rg-proof-layout">
-        <div class="rg-proof-copy reveal">
-          <p class="rg-section-label">Why Maple Leaf Edu-Travel</p>
-          <h2>More Than a Study Tour</h2>
-          <p>Backed by Maple Leaf Educational Systems, Maple Leaf Edu-Travel brings together education, cultural exchange and professional travel operations to create meaningful learning experiences for students around the world.</p>
-          <div class="rg-stat-row" aria-label="Maple Leaf Edu-Travel experience">
-            <article>
-              <strong data-count="30">30</strong><span>Years of Educational Experience</span>
-            </article>
-            <article>
-              <strong data-count="100">100</strong><span>Campuses</span>
-            </article>
-            <article>
-              <strong data-count="20000">20,000</strong><span>Participants</span>
-            </article>
-          </div>
-        </div>
-        <div class="rg-proof-media reveal">
-          <img src="public/images/home/about-campus.jpg" alt="Students participating in a Maple Leaf campus learning environment">
+    <section class="rg-credibility" id="why">
+      <div class="container">
+        <p class="rg-credibility-line reveal">Where K-12 Education Meets Professional Travel Operations</p>
+        <div class="rg-stat-row reveal" aria-label="Maple Leaf Edu-Travel experience">
+          <article><strong data-count="30">30</strong><span>Years of Experience</span></article>
+          <article><strong data-count="100">100</strong><span>Campuses</span></article>
+          <article><strong data-count="20000">20,000</strong><span>Participants</span></article>
         </div>
       </div>
     </section>
@@ -83,13 +70,13 @@
     <section class="rg-section rg-programs" id="programs">
       <div class="container">
         <div class="rg-section-heading reveal">
-          <p class="rg-section-label">Programs</p>
-          <h2>Choose Your China Program</h2>
+          <p class="rg-section-label">Choose Your Journey</p>
+          <h2>Explore China through learning, culture and connection.</h2>
         </div>
 
         <div class="rg-program-block immersion reveal">
           <div class="rg-program-image">
-            <img src="public/images/home/programs/school-immersion-cover.jpg" alt="Students learning together during a school immersion program">
+            <img src="public/media/programs/shenzhen-campus.jpg" alt="Students learning together during a school immersion program">
           </div>
           <div class="rg-program-content">
             <p class="rg-program-number">01</p>
@@ -109,21 +96,37 @@
 
         <div class="rg-program-block cultural reveal">
           <div class="rg-program-image">
-            <img src="public/images/home/programs/cultural-discovery-cover.jpg" alt="Students exploring Chinese culture and city learning experiences">
+            <img src="public/media/programs/shenzhen-hongkong.jpg" alt="Students exploring Chinese culture and city learning experiences">
           </div>
           <div class="rg-program-content">
             <p class="rg-program-number">02</p>
             <h3>Cultural Discovery Programs</h3>
             <p>Explore China through carefully designed journeys connecting history, culture, cities and contemporary life.</p>
             <div class="rg-program-list">
-              <a href="programs.html#explore">Beijing · 6 Days / 5 Nights</a>
-              <a href="programs.html#explore">Shanghai × Suzhou · 6 Days / 5 Nights</a>
-              <a href="programs.html#explore">Xi’an · 6 Days / 5 Nights</a>
-              <a href="programs.html#explore">Fujian · 6 Days / 5 Nights</a>
-              <a href="programs.html#explore">Shenzhen × Hong Kong · 6 Days / 5 Nights</a>
+              <a href="programs.html#explore">Beijing · 6 Days 5 Nights</a>
+              <a href="programs.html#explore">Shanghai × Suzhou · 6 Days 5 Nights</a>
+              <a href="programs.html#explore">Xi'an · 6 Days 5 Nights</a>
+              <a href="programs.html#explore">Fujian · 6 Days 5 Nights</a>
+              <a href="programs.html#explore">Shenzhen × Hong Kong · 6 Days 5 Nights</a>
             </div>
             <a class="rg-text-link" href="programs.html#explore">Explore Cultural Discovery Programs</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rg-section rg-experience" id="experience">
+      <div class="container rg-experience-layout">
+        <div class="rg-section-heading reveal">
+          <p class="rg-section-label">Educational Experience</p>
+          <h2>Learning becomes memorable when students participate.</h2>
+          <p>Clean structural placeholder for classroom exchange, student buddy moments, Chinese culture workshops, city discovery and outdoor learning stories.</p>
+        </div>
+        <div class="rg-experience-grid reveal" aria-label="Future experience storytelling images">
+          <div style="background-image:url('public/media/experiences/classroom.jpg')"><span>Classroom</span></div>
+          <div style="background-image:url('public/media/experiences/student-buddy.jpg')"><span>Student Buddy</span></div>
+          <div style="background-image:url('public/media/experiences/chinese-culture.jpg')"><span>Culture</span></div>
+          <div style="background-image:url('public/media/experiences/city-discovery.jpg')"><span>City Discovery</span></div>
         </div>
       </div>
     </section>
@@ -132,9 +135,9 @@
       <div class="rg-mission-image" aria-hidden="true"></div>
       <div class="rg-mission-overlay" aria-hidden="true"></div>
       <div class="container rg-mission-content reveal">
-        <p class="rg-section-label">Our Mission</p>
-        <h2>Connecting Young People with the World</h2>
-        <p>We believe travel becomes meaningful when students do more than visit a destination — when they learn, participate, connect and return home seeing the world differently.</p>
+        <p class="rg-section-label">Why Maple Leaf Edu-Travel</p>
+        <h2>Not simply a tour company.</h2>
+        <p>Maple Leaf Edu-Travel creates educational journeys that connect schools, students, cultures and places through thoughtful program design and professional support.</p>
         <a class="rg-button primary" href="#contact">Plan a Journey</a>
       </div>
     </section>
