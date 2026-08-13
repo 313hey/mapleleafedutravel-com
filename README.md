@@ -78,6 +78,6 @@ git push -f origin gh-pages
 
 - Official logo and visual identity assets
 - Approved photography and permissions
-- Whether `info@mapleleafedutravel.com` is active
+- Whether `edu-travel@mapleleafedutravel.com` is active
 - Privacy Policy and Terms of Use legal review
 - Final programme naming, scope, pricing and operational responsibilities
