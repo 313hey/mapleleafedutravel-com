@@ -71,7 +71,7 @@ const translations = {
     fieldEmail: "Email",
     fieldMessage: "Learning goals / preferred destination",
     submitForm: "Send Request",
-    formThanks: "Thank you. This is a demonstration form and has not been submitted.",
+    formThanks: "Thank you. Your request has been sent.",
     footerTagline: "Educational journeys that connect students, cultures and classrooms.",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
@@ -150,7 +150,7 @@ const translations = {
     fieldEmail: "邮箱",
     fieldMessage: "学习目标 / 意向目的地",
     submitForm: "发送需求",
-    formThanks: "Thank you. This is a demonstration form and has not been submitted.",
+    formThanks: "Thank you. Your request has been sent.",
     footerTagline: "连接学生、文化与课堂的教育旅程。",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
@@ -224,11 +224,10 @@ document.querySelectorAll(".nav-links a, .nav-tools a").forEach((link) => {
 });
 
 if (form && formMessage) {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("form") === "sent") {
     formMessage.textContent = translations[activeLanguage].formThanks;
-    form.reset();
-  });
+  }
 }
 
 function openModal(type) {

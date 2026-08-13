@@ -62,6 +62,12 @@ Only use photography and video after copyright, student consent and company appr
 
 Homepage English and Chinese text lives in `index.html` and `script.js`. Update both the visible English fallback and the translation keys in `script.js`.
 
+## Contact Form
+
+The proposal form currently posts to FormSubmit and forwards enquiries to `xushaochun@mapleleaf.net.cn`.
+
+On the first real submission, FormSubmit may send an activation email to that address. The recipient must confirm it before future form emails are delivered normally.
+
 ## Deployment
 
 The current GitHub Pages setup publishes from the `gh-pages` branch. After edits:
@@ -79,5 +85,6 @@ git push -f origin gh-pages
 - Official logo and visual identity assets
 - Approved photography and permissions
 - Whether `edu-travel@mapleleafedutravel.com` is active
+- Whether `xushaochun@mapleleaf.net.cn` should remain the official form recipient
 - Privacy Policy and Terms of Use legal review
 - Final programme naming, scope, pricing and operational responsibilities

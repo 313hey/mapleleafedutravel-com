@@ -253,8 +253,12 @@
             <p><span data-i18n="addressLabel">Address</span><strong data-i18n="addressText">Maple Leaf Education Building, No. 13 Baolong 1st Road, Baolong Community, Baolong Subdistrict, Longgang District, Shenzhen, Guangdong, China</strong></p>
           </div>
         </div>
-        <form class="proposal-form reveal" id="proposalForm">
-          <!-- TODO: Replace this demonstration email address if edu-travel@mapleleafedutravel.com is not yet officially active. -->
+        <form class="proposal-form reveal" id="proposalForm" action="https://formsubmit.co/xushaochun@mapleleaf.net.cn" method="POST">
+          <input type="hidden" name="_subject" value="New Maple Leaf Edu-Travel Website Enquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://www.mapleleafedutravel.com/?form=sent#contact">
+          <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label><span data-i18n="fieldName">Name</span><input name="name" type="text" autocomplete="name" required></label>
           <label><span data-i18n="fieldOrg">School / Organization</span><input name="organization" type="text" autocomplete="organization" required></label>
           <label><span data-i18n="fieldEmail">Email</span><input name="email" type="email" autocomplete="email" required></label>
