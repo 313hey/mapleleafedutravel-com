@@ -172,6 +172,7 @@ const modalTitle = document.querySelector("#modalTitle");
 const modalBody = document.querySelector("#modalBody");
 const siteHeader = document.querySelector("#siteHeader");
 const heroMedia = document.querySelector(".hero-media");
+const redGoldHeroVideo = document.querySelector(".rg-hero-video");
 const storyLayers = document.querySelectorAll(".story-layer");
 const storySteps = document.querySelectorAll(".story-step");
 const sections = document.querySelectorAll(".section, .storytelling-section");
@@ -206,6 +207,7 @@ function closeMobileMenu() {
   if (!navMenu || !menuToggle) return;
   navMenu.classList.remove("open");
   menuToggle.setAttribute("aria-expanded", "false");
+  if (siteHeader) siteHeader.classList.remove("menu-open");
 }
 
 languageButtons.forEach((button) => {
@@ -216,6 +218,7 @@ if (menuToggle && navMenu) {
   menuToggle.addEventListener("click", () => {
     const isOpen = navMenu.classList.toggle("open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));
+    if (siteHeader) siteHeader.classList.toggle("menu-open", isOpen);
   });
 }
 
@@ -249,6 +252,51 @@ if (form && formMessage) {
     window.location.href = buildEnquiryMailto(form);
     formMessage.textContent = translations[activeLanguage].formThanks;
   });
+}
+
+function setupRedGoldHeroVideo() {
+  if (!redGoldHeroVideo) return;
+
+  let animationFrame = 0;
+  const fadeDuration = 0.5;
+
+  function setVideoOpacity() {
+    const duration = redGoldHeroVideo.duration;
+    const currentTime = redGoldHeroVideo.currentTime;
+
+    if (Number.isFinite(duration) && duration > fadeDuration) {
+      const fadeIn = Math.min(1, currentTime / fadeDuration);
+      const fadeOut = Math.min(1, Math.max(0, (duration - currentTime) / fadeDuration));
+      redGoldHeroVideo.style.opacity = String(Math.max(0, Math.min(1, fadeIn, fadeOut)));
+    } else {
+      redGoldHeroVideo.style.opacity = redGoldHeroVideo.readyState >= 2 ? "1" : "0";
+    }
+
+    animationFrame = window.requestAnimationFrame(setVideoOpacity);
+  }
+
+  redGoldHeroVideo.addEventListener("loadeddata", () => {
+    redGoldHeroVideo.play().catch(() => {
+      redGoldHeroVideo.style.opacity = "0";
+    });
+  });
+
+  redGoldHeroVideo.addEventListener("ended", () => {
+    redGoldHeroVideo.style.opacity = "0";
+    window.setTimeout(() => {
+      redGoldHeroVideo.currentTime = 0;
+      redGoldHeroVideo.play().catch(() => {
+        redGoldHeroVideo.style.opacity = "0";
+      });
+    }, 100);
+  });
+
+  redGoldHeroVideo.addEventListener("error", () => {
+    redGoldHeroVideo.style.opacity = "0";
+    if (animationFrame) window.cancelAnimationFrame(animationFrame);
+  });
+
+  animationFrame = window.requestAnimationFrame(setVideoOpacity);
 }
 
 function openModal(type) {
@@ -364,4 +412,7 @@ window.addEventListener("scroll", requestScrollUpdate, { passive: true });
 window.addEventListener("resize", requestScrollUpdate);
 
 updateScrollEffects();
-setLanguage("en");
+setupRedGoldHeroVideo();
+if (languageButtons.length) {
+  setLanguage("en");
+}
