@@ -71,7 +71,7 @@ const translations = {
     fieldEmail: "Email",
     fieldMessage: "Learning goals / preferred destination",
     submitForm: "Send Request",
-    formThanks: "Thank you. Your request has been sent.",
+    formThanks: "Your email app has been opened with the request details. Please send the email to complete your enquiry.",
     footerTagline: "Educational journeys that connect students, cultures and classrooms.",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
@@ -150,7 +150,7 @@ const translations = {
     fieldEmail: "邮箱",
     fieldMessage: "学习目标 / 意向目的地",
     submitForm: "发送需求",
-    formThanks: "Thank you. Your request has been sent.",
+    formThanks: "邮件客户端已打开并填入需求内容，请点击发送完成提交。",
     footerTagline: "连接学生、文化与课堂的教育旅程。",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
@@ -223,11 +223,32 @@ document.querySelectorAll(".nav-links a, .nav-tools a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
 });
 
+function buildEnquiryMailto(formElement) {
+  const recipient = formElement.dataset.recipient || "xushaochun@mapleleaf.net.cn";
+  const data = new FormData(formElement);
+  const subject = "New Maple Leaf Edu-Travel Website Enquiry";
+  const body = [
+    "New enquiry from the Maple Leaf Edu-Travel website:",
+    "",
+    `Name: ${data.get("name") || ""}`,
+    `School / Organization: ${data.get("organization") || ""}`,
+    `Email: ${data.get("email") || ""}`,
+    "",
+    "Learning goals / preferred destination:",
+    data.get("message") || "",
+    "",
+    "Please reply directly to the sender's email address above."
+  ].join("\n");
+
+  return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 if (form && formMessage) {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("form") === "sent") {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    window.location.href = buildEnquiryMailto(form);
     formMessage.textContent = translations[activeLanguage].formThanks;
-  }
+  });
 }
 
 function openModal(type) {

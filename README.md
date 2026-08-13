@@ -64,9 +64,9 @@ Homepage English and Chinese text lives in `index.html` and `script.js`. Update 
 
 ## Contact Form
 
-The proposal form currently posts to FormSubmit and forwards enquiries to `xushaochun@mapleleaf.net.cn`.
+The proposal form currently uses a `mailto:` fallback and opens the visitor's email app with the enquiry details addressed to `xushaochun@mapleleaf.net.cn`.
 
-On the first real submission, FormSubmit may send an activation email to that address. The recipient must confirm it before future form emails are delivered normally.
+This avoids third-party form activation emails during the prototype stage. For production, replace this with a proper form backend such as a company server, Cloudflare Worker, Formspree, Getform or another approved service.
 
 ## Deployment
 
