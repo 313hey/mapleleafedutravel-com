@@ -18,7 +18,7 @@ Then open `http://127.0.0.1:8124/index.html`.
 
 - `index.html` - homepage with the selected public-facing content
 - `about.html` - light internal About page for group background figures
-- `programs.html` - light internal Programs page
+- `programs.html` - production-style Programs page inspired by the CultureLink Maple Leaf Edu-Travel reference
 - `stories.html` - light internal Stories page
 - `styles.css` - visual system, responsive layout, editorial imagery and motion styling
 - `script.js` - language switching, mobile menu, scroll storytelling, reveal animation, demo form and policy modal logic

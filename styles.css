@@ -1414,6 +1414,363 @@ textarea {
   color: var(--muted);
 }
 
+.programs-page {
+  background: #f8f6f1;
+}
+
+.programs-page .image-frame::before {
+  opacity: 0.14;
+}
+
+.programs-hero {
+  position: relative;
+  min-height: calc(100vh - 86px);
+  overflow: hidden;
+  background: #e7e0d2;
+  color: var(--paper);
+}
+
+.programs-hero-image {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(30, 30, 30, 0.72), rgba(30, 30, 30, 0.24) 46%, rgba(30, 30, 30, 0.08)),
+    url("assets/hero-campus-journey.jpg") center / cover;
+  transform: scale(var(--hero-scale, 1.02)) translateY(var(--hero-y, 0));
+  transform-origin: center;
+}
+
+.programs-hero-copy {
+  position: relative;
+  z-index: 1;
+  width: var(--container);
+  min-height: calc(100vh - 86px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(5rem, 8vw, 8rem) 0;
+}
+
+.program-kicker {
+  margin: 0 0 1.1rem;
+  color: #d6b777;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.programs-hero h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(5rem, 11.5vw, 12.4rem);
+  font-weight: 500;
+  line-height: 0.82;
+  letter-spacing: 0;
+}
+
+.programs-hero h1 span {
+  display: block;
+}
+
+.programs-hero-copy > p:not(.program-kicker) {
+  max-width: 620px;
+  margin: 2rem 0 0;
+  color: rgba(255, 250, 241, 0.86);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+}
+
+.programs-hero-actions,
+.programs-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.6rem;
+  margin-top: 2rem;
+}
+
+.programs-title-band {
+  padding: clamp(4rem, 9vw, 8rem) 0;
+  background: #f8f6f1;
+  border-bottom: 1px solid var(--line);
+}
+
+.programs-brand-lockup {
+  width: var(--container);
+  margin: 0 auto clamp(3rem, 8vw, 7rem);
+  text-align: center;
+}
+
+.programs-brand-lockup img {
+  width: min(300px, 68vw);
+  height: auto;
+}
+
+.programs-title-layout {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.25fr) minmax(0, 1fr) minmax(260px, 0.58fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: end;
+}
+
+.programs-title-layout h2,
+.programs-section-heading h2,
+.feature-strip-copy h2,
+.journey-detail-copy h2,
+.programs-cta h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 500;
+  line-height: 0.94;
+}
+
+.programs-title-layout p:last-child,
+.programs-section-heading p,
+.feature-strip-copy p,
+.journey-detail-copy p,
+.programs-cta p {
+  color: #6f6860;
+  font-size: 1.05rem;
+}
+
+.programs-section-heading {
+  max-width: 980px;
+  margin-bottom: clamp(2.4rem, 6vw, 5rem);
+}
+
+.campus-program-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) repeat(2, minmax(220px, 0.72fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.campus-program {
+  min-height: 260px;
+  padding: clamp(1.2rem, 2.8vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fffaf1;
+}
+
+.campus-program.large {
+  grid-row: span 2;
+  min-height: 600px;
+  justify-content: flex-end;
+  color: var(--paper);
+  background-image:
+    linear-gradient(0deg, rgba(30, 30, 30, 0.76), rgba(30, 30, 30, 0.16)),
+    url("public/media/programs/inbound.jpg");
+}
+
+.campus-program.large::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(0deg, rgba(30, 30, 30, 0.48), transparent 55%);
+}
+
+.campus-program.large > div {
+  position: relative;
+  z-index: 1;
+}
+
+.campus-program span,
+.route-card p,
+.journey-detail-panel h3 {
+  margin: 0 0 0.8rem;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.campus-program h3,
+.route-card h3,
+.journey-detail-panel h3 {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 3vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.campus-program.large h3 {
+  color: var(--paper);
+}
+
+.campus-program p {
+  max-width: 520px;
+  color: rgba(255, 250, 241, 0.82);
+}
+
+.campus-program a,
+.route-card a {
+  width: fit-content;
+  margin-top: 1.4rem;
+  color: var(--accent);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+}
+
+.campus-program.large a {
+  color: #d6b777;
+}
+
+.programs-feature-strip {
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  background: #241f1b;
+  color: var(--paper);
+}
+
+.feature-strip-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  gap: clamp(2rem, 7vw, 6rem);
+  align-items: center;
+}
+
+.feature-strip-media {
+  min-height: 640px;
+  background-image:
+    linear-gradient(0deg, rgba(30, 30, 30, 0.18), rgba(30, 30, 30, 0.04)),
+    url("assets/program-study-china.jpg");
+}
+
+.feature-strip-copy p {
+  color: rgba(255, 250, 241, 0.72);
+}
+
+.program-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.6rem 0 2rem;
+}
+
+.program-labels span {
+  border: 1px solid rgba(176, 141, 87, 0.5);
+  padding: 0.45rem 0.7rem;
+  color: inherit;
+  font-size: 0.84rem;
+}
+
+.cultural-section {
+  background: #f8f6f1;
+}
+
+.cultural-route-list {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.route-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+  gap: clamp(1.3rem, 4vw, 3rem);
+  align-items: center;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  background: #fbf8f0;
+}
+
+.route-card.highlight {
+  background: #efe7da;
+}
+
+.route-image {
+  min-height: 280px;
+}
+
+.route-card span {
+  display: block;
+  max-width: 720px;
+  margin-top: 0.9rem;
+  color: var(--muted);
+}
+
+.route-beijing {
+  background-image: url("public/media/programs/domestic.jpg");
+}
+
+.route-shanghai {
+  background-image: url("public/media/journeys/hong-kong.jpg");
+}
+
+.route-xian {
+  background-image: url("public/media/journeys/inner-mongolia.jpg");
+}
+
+.route-fujian {
+  background-image: url("public/media/learning/cultural-workshop.jpg");
+}
+
+.route-gba {
+  background-image: url("assets/journey-greater-bay-area.jpg");
+}
+
+.journey-detail-section {
+  background: #efe8dc;
+}
+
+.journey-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.56fr);
+  gap: clamp(2rem, 7vw, 6rem);
+  align-items: start;
+}
+
+.journey-detail-copy p:nth-of-type(2) {
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.journey-detail-panel {
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  border-left: 1px solid var(--accent);
+  background: rgba(255, 250, 241, 0.52);
+}
+
+.journey-detail-panel h3 {
+  color: var(--text);
+}
+
+.journey-detail-panel ul {
+  margin: 1.4rem 0 1.8rem;
+  padding: 0;
+  list-style: none;
+}
+
+.journey-detail-panel li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.programs-cta {
+  padding: clamp(5rem, 10vw, 10rem) 0;
+  background:
+    linear-gradient(90deg, rgba(30, 30, 30, 0.82), rgba(30, 30, 30, 0.42)),
+    url("assets/program-global-learning.jpg") center / cover;
+  color: var(--paper);
+}
+
+.programs-cta-layout {
+  max-width: 880px;
+}
+
+.programs-cta p {
+  color: rgba(255, 250, 241, 0.78);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(26px);
@@ -1623,6 +1980,25 @@ textarea {
     overflow-x: auto;
     padding-bottom: 1rem;
   }
+
+  .programs-title-layout,
+  .feature-strip-layout,
+  .journey-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .campus-program-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .campus-program.large {
+    grid-column: 1 / -1;
+    min-height: 520px;
+  }
+
+  .feature-strip-media {
+    min-height: 520px;
+  }
 }
 
 @keyframes menuIn {
@@ -1787,5 +2163,58 @@ textarea {
 
   .proposal-form {
     padding: 1.2rem;
+  }
+
+  .programs-hero,
+  .programs-hero-copy {
+    min-height: 720px;
+  }
+
+  .programs-hero h1 {
+    font-size: clamp(4.5rem, 22vw, 6.8rem);
+  }
+
+  .programs-hero-copy > p:not(.program-kicker) {
+    max-width: 100%;
+  }
+
+  .programs-brand-lockup {
+    text-align: left;
+  }
+
+  .programs-title-layout h2,
+  .programs-section-heading h2,
+  .feature-strip-copy h2,
+  .journey-detail-copy h2,
+  .programs-cta h2 {
+    font-size: clamp(2.8rem, 14vw, 4.4rem);
+  }
+
+  .campus-program-grid,
+  .route-card {
+    grid-template-columns: 1fr;
+  }
+
+  .campus-program,
+  .campus-program.large {
+    min-height: 320px;
+  }
+
+  .campus-program.large {
+    grid-column: auto;
+  }
+
+  .feature-strip-media,
+  .route-image {
+    min-height: 360px;
+  }
+
+  .program-labels span {
+    max-width: 100%;
+  }
+
+  .journey-detail-panel {
+    border-left: 0;
+    border-top: 1px solid var(--accent);
   }
 }
