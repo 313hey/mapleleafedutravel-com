@@ -71,7 +71,7 @@ const translations = {
     fieldEmail: "Email",
     fieldMessage: "Learning goals / preferred destination",
     submitForm: "Send Request",
-    formThanks: "Your email app has been opened with the request details. Please send the email to complete your enquiry.",
+    formThanks: "Thank you. This is a demonstration form and has not been submitted.",
     footerTagline: "Educational journeys that connect students, cultures and classrooms.",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
@@ -150,7 +150,7 @@ const translations = {
     fieldEmail: "邮箱",
     fieldMessage: "学习目标 / 意向目的地",
     submitForm: "发送需求",
-    formThanks: "邮件客户端已打开并填入需求内容，请点击发送完成提交。",
+    formThanks: "Thank you. This is a demonstration form and has not been submitted.",
     footerTagline: "连接学生、文化与课堂的教育旅程。",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
@@ -172,7 +172,6 @@ const modalTitle = document.querySelector("#modalTitle");
 const modalBody = document.querySelector("#modalBody");
 const siteHeader = document.querySelector("#siteHeader");
 const heroMedia = document.querySelector(".hero-media");
-const redGoldHeroVideo = document.querySelector(".rg-hero-video");
 const storyLayers = document.querySelectorAll(".story-layer");
 const storySteps = document.querySelectorAll(".story-step");
 const sections = document.querySelectorAll(".section, .storytelling-section");
@@ -207,7 +206,6 @@ function closeMobileMenu() {
   if (!navMenu || !menuToggle) return;
   navMenu.classList.remove("open");
   menuToggle.setAttribute("aria-expanded", "false");
-  if (siteHeader) siteHeader.classList.remove("menu-open");
 }
 
 languageButtons.forEach((button) => {
@@ -218,7 +216,6 @@ if (menuToggle && navMenu) {
   menuToggle.addEventListener("click", () => {
     const isOpen = navMenu.classList.toggle("open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));
-    if (siteHeader) siteHeader.classList.toggle("menu-open", isOpen);
   });
 }
 
@@ -226,77 +223,12 @@ document.querySelectorAll(".nav-links a, .nav-tools a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
 });
 
-function buildEnquiryMailto(formElement) {
-  const recipient = formElement.dataset.recipient || "xushaochun@mapleleaf.net.cn";
-  const data = new FormData(formElement);
-  const subject = "New Maple Leaf Edu-Travel Website Enquiry";
-  const body = [
-    "New enquiry from the Maple Leaf Edu-Travel website:",
-    "",
-    `Name: ${data.get("name") || ""}`,
-    `School / Organization: ${data.get("organization") || ""}`,
-    `Email: ${data.get("email") || ""}`,
-    "",
-    "Learning goals / preferred destination:",
-    data.get("message") || "",
-    "",
-    "Please reply directly to the sender's email address above."
-  ].join("\n");
-
-  return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
-
 if (form && formMessage) {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    window.location.href = buildEnquiryMailto(form);
     formMessage.textContent = translations[activeLanguage].formThanks;
+    form.reset();
   });
-}
-
-function setupRedGoldHeroVideo() {
-  if (!redGoldHeroVideo) return;
-
-  let animationFrame = 0;
-  const fadeDuration = 0.5;
-
-  function setVideoOpacity() {
-    const duration = redGoldHeroVideo.duration;
-    const currentTime = redGoldHeroVideo.currentTime;
-
-    if (Number.isFinite(duration) && duration > fadeDuration) {
-      const fadeIn = Math.min(1, currentTime / fadeDuration);
-      const fadeOut = Math.min(1, Math.max(0, (duration - currentTime) / fadeDuration));
-      redGoldHeroVideo.style.opacity = String(Math.max(0, Math.min(1, fadeIn, fadeOut)));
-    } else {
-      redGoldHeroVideo.style.opacity = redGoldHeroVideo.readyState >= 2 ? "1" : "0";
-    }
-
-    animationFrame = window.requestAnimationFrame(setVideoOpacity);
-  }
-
-  redGoldHeroVideo.addEventListener("loadeddata", () => {
-    redGoldHeroVideo.play().catch(() => {
-      redGoldHeroVideo.style.opacity = "0";
-    });
-  });
-
-  redGoldHeroVideo.addEventListener("ended", () => {
-    redGoldHeroVideo.style.opacity = "0";
-    window.setTimeout(() => {
-      redGoldHeroVideo.currentTime = 0;
-      redGoldHeroVideo.play().catch(() => {
-        redGoldHeroVideo.style.opacity = "0";
-      });
-    }, 100);
-  });
-
-  redGoldHeroVideo.addEventListener("error", () => {
-    redGoldHeroVideo.style.opacity = "0";
-    if (animationFrame) window.cancelAnimationFrame(animationFrame);
-  });
-
-  animationFrame = window.requestAnimationFrame(setVideoOpacity);
 }
 
 function openModal(type) {
@@ -412,7 +344,4 @@ window.addEventListener("scroll", requestScrollUpdate, { passive: true });
 window.addEventListener("resize", requestScrollUpdate);
 
 updateScrollEffects();
-setupRedGoldHeroVideo();
-if (languageButtons.length) {
-  setLanguage("en");
-}
+setLanguage("en");

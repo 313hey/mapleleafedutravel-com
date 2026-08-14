@@ -18,7 +18,7 @@ Then open `http://127.0.0.1:8124/index.html`.
 
 - `index.html` - homepage with the selected public-facing content
 - `about.html` - light internal About page for group background figures
-- `programs.html` - production-style Programs page inspired by the CultureLink Maple Leaf Edu-Travel reference
+- `programs.html` - light internal Programs page
 - `stories.html` - light internal Stories page
 - `styles.css` - visual system, responsive layout, editorial imagery and motion styling
 - `script.js` - language switching, mobile menu, scroll storytelling, reveal animation, demo form and policy modal logic
@@ -62,12 +62,6 @@ Only use photography and video after copyright, student consent and company appr
 
 Homepage English and Chinese text lives in `index.html` and `script.js`. Update both the visible English fallback and the translation keys in `script.js`.
 
-## Contact Form
-
-The proposal form currently uses a `mailto:` fallback and opens the visitor's email app with the enquiry details addressed to `xushaochun@mapleleaf.net.cn`.
-
-This avoids third-party form activation emails during the prototype stage. For production, replace this with a proper form backend such as a company server, Cloudflare Worker, Formspree, Getform or another approved service.
-
 ## Deployment
 
 The current GitHub Pages setup publishes from the `gh-pages` branch. After edits:
@@ -85,6 +79,5 @@ git push -f origin gh-pages
 - Official logo and visual identity assets
 - Approved photography and permissions
 - Whether `edu-travel@mapleleafedutravel.com` is active
-- Whether `xushaochun@mapleleaf.net.cn` should remain the official form recipient
 - Privacy Policy and Terms of Use legal review
 - Final programme naming, scope, pricing and operational responsibilities
