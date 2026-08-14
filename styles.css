@@ -103,22 +103,34 @@
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  display: grid;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   background: #fff;
+}
+
+.rg-hero-media {
+  position: relative;
+  width: 100%;
+  height: 65vh;
+  min-height: 560px;
+  max-height: 760px;
+  overflow: hidden;
+  background: #f1eee7;
 }
 
 .rg-hero-video,
 .rg-hero-image {
   position: absolute;
-  inset: 300px 0 0 0;
+  inset: 0;
   width: 100%;
-  height: calc(100% - 300px);
+  height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .rg-hero-video {
-  z-index: 0;
+  z-index: 1;
   opacity: 0;
 }
 
@@ -129,26 +141,26 @@
     url("public/media/hero/hero-poster.jpg") center top / cover;
 }
 
-.rg-hero-overlay {
+.rg-hero-media::after {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
   background:
-    linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.82) 27%, rgba(255, 255, 255, 0.18) 48%, #fff 100%),
-    radial-gradient(circle at 18% 30%, rgba(166, 30, 46, 0.16), transparent 32%),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.38) 56%, rgba(255, 255, 255, 0.78));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.02) 26%, rgba(255, 255, 255, 0.12) 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.05), transparent 46%);
 }
 
 .rg-hero-inner {
   position: relative;
-  z-index: 2;
-  min-height: 100vh;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: calc(8rem - 75px) 0 10rem;
+  padding: clamp(6.4rem, 10vh, 7.4rem) 0 clamp(1.4rem, 3vh, 2.2rem);
 }
 
 .rg-eyebrow,
@@ -191,11 +203,20 @@
 }
 
 .rg-hero h1 {
-  max-width: 1040px;
+  max-width: 1280px;
   color: #000;
-  font-size: clamp(3.6rem, 7.1vw, 7rem);
-  line-height: 0.95;
+  font-size: clamp(3.6rem, 6.4vw, 6.7rem);
+  line-height: 0.9;
   letter-spacing: -0.03em;
+}
+
+.rg-hero h1 span,
+.rg-hero h1 strong {
+  display: block;
+}
+
+.rg-hero h1 span:first-child {
+  white-space: nowrap;
 }
 
 .rg-hero h1 em,
@@ -214,7 +235,7 @@
 
 .rg-hero-lede {
   max-width: 760px;
-  margin: 2rem auto 0;
+  margin: 1.25rem auto 0;
   color: #6f6f6f;
   font-size: clamp(1rem, 1.8vw, 1.22rem);
   line-height: 1.75;
@@ -225,7 +246,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  margin-top: 3rem;
+  margin-top: 1.55rem;
 }
 
 .rg-button,
@@ -686,6 +707,12 @@
   .rg-program-block.cultural .rg-program-image {
     order: 0;
   }
+
+  .rg-hero-media {
+    height: 60vh;
+    min-height: 500px;
+    max-height: 680px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -708,21 +735,25 @@
     background: var(--text);
   }
 
-  .rg-hero-video,
-  .rg-hero-image {
-    inset: 230px 0 0 0;
-    height: calc(100% - 230px);
+  .rg-hero-media {
+    height: 58vh;
+    min-height: 420px;
+    max-height: 620px;
   }
 
   .rg-hero-inner {
     align-items: flex-start;
     text-align: left;
-    padding: 7rem 0 6rem;
+    padding: 6.4rem 0 2.25rem;
   }
 
   .rg-hero h1 {
     font-size: clamp(2.85rem, 12.8vw, 4rem);
     letter-spacing: -0.025em;
+  }
+
+  .rg-hero h1 span:first-child {
+    white-space: normal;
   }
 
   .rg-text-brand {
