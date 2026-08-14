@@ -23,7 +23,7 @@ Then open `http://127.0.0.1:8124/index.html`.
 - `styles.css` - visual system, responsive layout, editorial imagery and motion styling
 - `script.js` - language switching, mobile menu, scroll storytelling, reveal animation, demo form and policy modal logic
 - `assets/` - logo assets
-- `public/media/` - replaceable homepage photography and future video assets
+- `public/media/` - selected local beta imagery and video assets
 
 ## Content Policy
 
@@ -50,13 +50,13 @@ The header currently uses:
 
 Replace those files with approved final logo exports using the same filenames, or update the `<img>` paths in each HTML file.
 
-## Replace Images
+## Images
 
-The homepage now uses temporary editorial prototype images under `public/media/`. Replace them with approved Maple Leaf photography using the same filenames where possible.
+The homepage has been paired with local beta imagery under `public/media/`. These files are selected for the test site so the page can be reviewed as a complete visual experience without relying on remote image URLs.
 
-See `public/media/README.md` for the full media checklist, including hero video, program images, journey images, learning images and video story assets.
+See `public/media/README.md` for the full media map, including hero, program, journey, learning and video story assets.
 
-Only use photography and video after copyright, student consent and company approval are confirmed.
+Before final public launch, replace beta visuals with approved Maple Leaf photography/video after copyright, student consent and company approval are confirmed. Keep the same filenames where possible.
 
 ## Modify Text
 

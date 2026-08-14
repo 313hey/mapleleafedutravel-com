@@ -1,33 +1,34 @@
-# Maple Leaf Edu-Travel Media Plan
+# Maple Leaf Edu-Travel Media Assets
 
-These assets are temporary prototype images. Replace them later with approved Maple Leaf Edu-Travel photography and video.
+The current test site has been paired with a complete local image set for review. These are prototype editorial visuals stored in the repository, so the website does not depend on external image URLs.
+
+Use these assets for the beta review stage. Before a final public launch, replace them with approved Maple Leaf photography/video after copyright, student consent and company approval are confirmed.
 
 ## HERO
-- `hero/hero-main.mp4` for the final cinematic hero video.
-- `hero/hero-poster.jpg` for the fallback poster image.
+- `hero/hero-poster.jpg` - cinematic campus arrival / learning journey hero image.
 
 ## PROGRAMS
-- `programs/inbound.jpg` for China inbound programs.
-- `programs/outbound.jpg` for overseas learning programs.
-- `programs/domestic.jpg` for domestic China programs.
+- `programs/inbound.jpg` - China inbound campus immersion.
+- `programs/outbound.jpg` - overseas learning / global classroom exploration.
+- `programs/domestic.jpg` - China-based cultural and historical study travel.
 
 ## JOURNEYS
-- `journeys/shenzhen.jpg` for innovation, campus and modern China.
-- `journeys/guangzhou-foshan.jpg` for Lingnan culture and heritage.
-- `journeys/inner-mongolia.jpg` for nature and cultural immersion.
-- `journeys/hong-kong.jpg` for global city and urban learning.
+- `journeys/shenzhen.jpg` - innovation, campus and modern China.
+- `journeys/guangzhou-foshan.jpg` - Lingnan culture and heritage.
+- `journeys/inner-mongolia.jpg` - nature and cultural immersion.
+- `journeys/hong-kong.jpg` - global city and urban learning.
 - Optional future images: `journeys/shanghai-suzhou.jpg`, `journeys/singapore.jpg`, `journeys/canada.jpg`.
 
 ## LEARNING
-- `learning/stem-lab.jpg` for STEM, innovation or enterprise visit experiences.
-- `learning/cultural-workshop.jpg` for calligraphy, Wing Chun, opera, craft or local culture workshops.
+- `learning/stem-lab.jpg` - STEM, innovation or enterprise visit experiences.
+- `learning/cultural-workshop.jpg` - calligraphy, Wing Chun, opera, craft or local culture workshops.
 - Optional future images: `learning/classroom.jpg`, `learning/buddy-program.jpg`, `learning/field-learning.jpg`.
 
 ## STORY / VIDEO
-- `story/homepage-story.mp4` for the main editorial video section.
-- `story/homepage-story-poster.jpg` for the video poster image.
+- `story/homepage-story.mp4` - local looping/test story video used in the video section.
+- `story/homepage-story-poster.jpg` - poster image for the video.
 
 ## ABOUT
-- `about/classroom-exchange.jpg` for school exchange, buddy program or classroom interaction.
+- `about/classroom-exchange.jpg` - school exchange, buddy program or classroom interaction.
 
-Final assets should be documentary-style, natural-light, permission-cleared and approved for public website use.
+Final replacement assets should be documentary-style, natural-light, permission-cleared and approved for public website use.
