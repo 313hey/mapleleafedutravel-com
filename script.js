@@ -71,11 +71,12 @@ const translations = {
     fieldEmail: "Email",
     fieldMessage: "Learning goals / preferred destination",
     submitForm: "Send Request",
-    formThanks: "Thank you. This is a demonstration form and has not been submitted.",
+    formThanks: "Sending your request. If this is the first website enquiry, please confirm the FormSubmit activation email sent to the recipient inbox.",
+    formSent: "Thank you. Your request has been sent.",
     footerTagline: "Educational journeys that connect students, cultures and classrooms.",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
-    privacyBody: "<p>This is temporary website testing text and must be reviewed by the company before public release.</p><p>The demonstration form on this page does not submit or store personal information. Future versions should clearly explain what data is collected, how it is used, how long it is retained and how schools or families may contact Maple Leaf Edu-Travel about privacy requests.</p>",
+    privacyBody: "<p>This is temporary website testing text and must be reviewed by the company before public release.</p><p>The enquiry form sends submitted information by email through a static form forwarding service. Future versions should clearly explain what data is collected, how it is used, how long it is retained and how schools or families may contact Maple Leaf Edu-Travel about privacy requests.</p>",
     termsBody: "<p>This is temporary terms text for website testing and must be reviewed by the company before public release.</p><p>Program descriptions are provided for general information during the test stage. Final program details, pricing, responsibilities, cancellation terms and safety procedures should be confirmed in written agreements with participating schools or organizations.</p>"
   },
   zh: {
@@ -150,11 +151,12 @@ const translations = {
     fieldEmail: "邮箱",
     fieldMessage: "学习目标 / 意向目的地",
     submitForm: "发送需求",
-    formThanks: "Thank you. This is a demonstration form and has not been submitted.",
+    formThanks: "正在发送需求。如这是网站首次提交，请在收件邮箱中确认 FormSubmit 激活邮件。",
+    formSent: "谢谢，您的需求已发送。",
     footerTagline: "连接学生、文化与课堂的教育旅程。",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
-    privacyBody: "<p>以下为测试阶段隐私政策文本，正式发布前需由公司审核。</p><p>当前演示表单不会提交或保存个人信息。正式版本应清楚说明数据收集范围、用途、保存期限，以及学校或家庭如何联系 Maple Leaf Edu-Travel 处理隐私请求。</p>",
+    privacyBody: "<p>以下为测试阶段隐私政策文本，正式发布前需由公司审核。</p><p>当前咨询表单会通过静态表单转发服务以邮件形式发送提交信息。正式版本应清楚说明数据收集范围、用途、保存期限，以及学校或家庭如何联系 Maple Leaf Edu-Travel 处理隐私请求。</p>",
     termsBody: "<p>以下为测试阶段使用条款文本，正式发布前需由公司审核。</p><p>页面中的项目说明仅用于测试阶段展示。最终项目细节、报价、责任分工、取消条款和安全流程，应以与参与学校或机构确认的书面文件为准。</p>"
   }
 };
@@ -198,7 +200,7 @@ function setLanguage(language) {
   });
 
   if (formMessage && formMessage.textContent.trim()) {
-    formMessage.textContent = translations[language].formThanks;
+    formMessage.textContent = translations[language][formMessage.dataset.status || "formThanks"];
   }
 }
 
@@ -224,10 +226,14 @@ document.querySelectorAll(".nav-links a, .nav-tools a").forEach((link) => {
 });
 
 if (form && formMessage) {
+  if (new URLSearchParams(window.location.search).get("form") === "sent") {
+    formMessage.dataset.status = "formSent";
+    formMessage.textContent = translations[activeLanguage].formSent;
+  }
+
   form.addEventListener("submit", (event) => {
-    event.preventDefault();
+    formMessage.dataset.status = "formThanks";
     formMessage.textContent = translations[activeLanguage].formThanks;
-    form.reset();
   });
 }
 

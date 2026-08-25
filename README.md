@@ -74,6 +74,12 @@ git branch -f gh-pages main
 git push -f origin gh-pages
 ```
 
+## Enquiry Form
+
+The homepage enquiry form posts to FormSubmit and is configured to forward submissions to `xushaochun@mapleleaf.net.cn`.
+
+On the first real submission, FormSubmit sends an activation email to that inbox. Open the activation email and confirm it once; after that, future website enquiries will be forwarded to the inbox.
+
 ## Still Needs Company Confirmation
 
 - Official logo and visual identity assets
