@@ -71,13 +71,13 @@ const translations = {
     fieldEmail: "Email",
     fieldMessage: "Learning goals / preferred destination",
     submitForm: "Send Request",
-    formThanks: "Sending your request...",
-    formSent: "Thank you. Your request has been sent.",
-    formError: "Sorry, your request could not be sent. Please email edu-travel@mapleleafedutravel.com directly.",
+    formThanks: "Opening your email app...",
+    formSent: "Your email app should open with this request. Please review and send the email.",
+    formError: "If your email app did not open, please email xushaochun@mapleleaf.net.cn directly.",
     footerTagline: "Educational journeys that connect students, cultures and classrooms.",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
-    privacyBody: "<p>This is temporary website testing text and must be reviewed by the company before public release.</p><p>The enquiry form sends submitted information by email through a static form forwarding service. Future versions should clearly explain what data is collected, how it is used, how long it is retained and how schools or families may contact Maple Leaf Edu-Travel about privacy requests.</p>",
+    privacyBody: "<p>This is temporary website testing text and must be reviewed by the company before public release.</p><p>The enquiry form opens the visitor's email app with the entered information prepared as an email draft. Future versions should clearly explain what data is collected, how it is used, how long it is retained and how schools or families may contact Maple Leaf Edu-Travel about privacy requests.</p>",
     termsBody: "<p>This is temporary terms text for website testing and must be reviewed by the company before public release.</p><p>Program descriptions are provided for general information during the test stage. Final program details, pricing, responsibilities, cancellation terms and safety procedures should be confirmed in written agreements with participating schools or organizations.</p>"
   },
   zh: {
@@ -152,13 +152,13 @@ const translations = {
     fieldEmail: "邮箱",
     fieldMessage: "学习目标 / 意向目的地",
     submitForm: "发送需求",
-    formThanks: "正在发送需求...",
-    formSent: "谢谢，您的需求已发送。",
-    formError: "抱歉，需求暂时未能发送。请直接发送邮件至 edu-travel@mapleleafedutravel.com。",
+    formThanks: "正在打开邮件应用...",
+    formSent: "邮件应用应已打开并生成草稿，请检查内容后发送。",
+    formError: "如果邮件应用没有打开，请直接发送邮件至 xushaochun@mapleleaf.net.cn。",
     footerTagline: "连接学生、文化与课堂的教育旅程。",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
-    privacyBody: "<p>以下为测试阶段隐私政策文本，正式发布前需由公司审核。</p><p>当前咨询表单会通过静态表单转发服务以邮件形式发送提交信息。正式版本应清楚说明数据收集范围、用途、保存期限，以及学校或家庭如何联系 Maple Leaf Edu-Travel 处理隐私请求。</p>",
+    privacyBody: "<p>以下为测试阶段隐私政策文本，正式发布前需由公司审核。</p><p>当前咨询表单会调用访客本机邮件应用，并将填写内容生成邮件草稿。正式版本应清楚说明数据收集范围、用途、保存期限，以及学校或家庭如何联系 Maple Leaf Edu-Travel 处理隐私请求。</p>",
     termsBody: "<p>以下为测试阶段使用条款文本，正式发布前需由公司审核。</p><p>页面中的项目说明仅用于测试阶段展示。最终项目细节、报价、责任分工、取消条款和安全流程，应以与参与学校或机构确认的书面文件为准。</p>"
   }
 };
@@ -228,43 +228,40 @@ document.querySelectorAll(".nav-links a, .nav-tools a").forEach((link) => {
 });
 
 if (form && formMessage) {
-  form.addEventListener("submit", async (event) => {
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
     formMessage.dataset.status = "formThanks";
     formMessage.textContent = translations[activeLanguage].formThanks;
 
-    const submitButton = form.querySelector("[type='submit']");
-    if (submitButton) submitButton.disabled = true;
-
-    try {
-      const data = new FormData(form);
-      const payload = {
-        name: String(data.get("name") || "").trim(),
-        organization: String(data.get("organization") || "").trim(),
-        email: String(data.get("email") || "").trim(),
-        message: String(data.get("message") || "").trim(),
-        honey: String(data.get("_honey") || "").trim()
-      };
-
-      const response = await fetch(form.dataset.endpoint || form.action, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-
-      if (!response.ok) {
-        throw new Error(`Request failed with ${response.status}`);
-      }
-
-      form.reset();
-      formMessage.dataset.status = "formSent";
-      formMessage.textContent = translations[activeLanguage].formSent;
-    } catch (error) {
-      formMessage.dataset.status = "formError";
-      formMessage.textContent = translations[activeLanguage].formError;
-    } finally {
-      if (submitButton) submitButton.disabled = false;
+    const data = new FormData(form);
+    if (String(data.get("_honey") || "").trim()) {
+      return;
     }
+
+    const name = String(data.get("name") || "").trim();
+    const organization = String(data.get("organization") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const message = String(data.get("message") || "").trim();
+    const recipient = form.dataset.recipient || "xushaochun@mapleleaf.net.cn";
+    const subject = `Maple Leaf Edu-Travel enquiry from ${name || "website visitor"}`;
+    const body = [
+      "Hello Maple Leaf Edu-Travel,",
+      "",
+      "I would like to discuss an educational journey.",
+      "",
+      `Name: ${name}`,
+      `School / Organization: ${organization}`,
+      `Email: ${email}`,
+      "",
+      "Learning goals / preferred destination:",
+      message || "(Please add details here.)",
+      "",
+      "Source: https://www.mapleleafedutravel.com/"
+    ].join("\n");
+
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    formMessage.dataset.status = "formSent";
+    formMessage.textContent = translations[activeLanguage].formSent;
   });
 }
 

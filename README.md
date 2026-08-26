@@ -76,11 +76,15 @@ git push -f origin gh-pages
 
 ## Enquiry Form
 
-The homepage enquiry form is configured to post to `/api/contact`.
+The homepage enquiry form uses a `mailto:` workflow. When a visitor clicks **Send Request**, the site opens the visitor's email app with the recipient, subject and message body already filled in.
 
-The backend code is in `cloudflare-worker/`. It receives the form data and forwards the enquiry to `xushaochun@mapleleaf.net.cn` through a Cloudflare Worker Email binding.
+Current recipient:
 
-Deploy the Worker and route `https://www.mapleleafedutravel.com/api/contact` to it before expecting live form submissions. See `cloudflare-worker/README.md`.
+```text
+xushaochun@mapleleaf.net.cn
+```
+
+This avoids a backend service during the prototype stage. It does depend on the visitor having an email app configured on their device.
 
 ## Still Needs Company Confirmation
 
