@@ -66,14 +66,6 @@ const translations = {
     ctaButtonTwo: "Contact Us",
     addressLabel: "Address",
     addressText: "Maple Leaf Education Building, No. 13 Baolong 1st Road, Baolong Community, Baolong Subdistrict, Longgang District, Shenzhen, Guangdong, China",
-    fieldName: "Name",
-    fieldOrg: "School / Organization",
-    fieldEmail: "Email",
-    fieldMessage: "Learning goals / preferred destination",
-    submitForm: "Send Request",
-    formThanks: "Opening your email app...",
-    formSent: "Your email app should open with this request. Please review and send the email.",
-    formError: "If your email app did not open, please email xushaochun@mapleleaf.net.cn directly.",
     footerTagline: "Educational journeys that connect students, cultures and classrooms.",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
@@ -147,14 +139,6 @@ const translations = {
     ctaButtonTwo: "联系我们",
     addressLabel: "地址",
     addressText: "中国广东省深圳市龙岗区宝龙街道宝龙社区宝龙一路13号枫叶教育大厦601-613室",
-    fieldName: "姓名",
-    fieldOrg: "学校 / 机构",
-    fieldEmail: "邮箱",
-    fieldMessage: "学习目标 / 意向目的地",
-    submitForm: "发送需求",
-    formThanks: "正在打开邮件应用...",
-    formSent: "邮件应用应已打开并生成草稿，请检查内容后发送。",
-    formError: "如果邮件应用没有打开，请直接发送邮件至 xushaochun@mapleleaf.net.cn。",
     footerTagline: "连接学生、文化与课堂的教育旅程。",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
@@ -168,8 +152,6 @@ document.documentElement.classList.add("motion-ready");
 const languageButtons = document.querySelectorAll(".lang-btn");
 const menuToggle = document.querySelector(".menu-toggle");
 const navMenu = document.querySelector("#navMenu");
-const form = document.querySelector("#proposalForm");
-const formMessage = document.querySelector("#formMessage");
 const modal = document.querySelector("#policyModal");
 const modalDialog = modal ? modal.querySelector(".modal-dialog") : null;
 const modalTitle = document.querySelector("#modalTitle");
@@ -201,9 +183,6 @@ function setLanguage(language) {
     button.setAttribute("aria-pressed", String(isActive));
   });
 
-  if (formMessage && formMessage.textContent.trim()) {
-    formMessage.textContent = translations[language][formMessage.dataset.status || "formThanks"];
-  }
 }
 
 function closeMobileMenu() {
@@ -226,44 +205,6 @@ if (menuToggle && navMenu) {
 document.querySelectorAll(".nav-links a, .nav-tools a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
 });
-
-if (form && formMessage) {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    formMessage.dataset.status = "formThanks";
-    formMessage.textContent = translations[activeLanguage].formThanks;
-
-    const data = new FormData(form);
-    if (String(data.get("_honey") || "").trim()) {
-      return;
-    }
-
-    const name = String(data.get("name") || "").trim();
-    const organization = String(data.get("organization") || "").trim();
-    const email = String(data.get("email") || "").trim();
-    const message = String(data.get("message") || "").trim();
-    const recipient = form.dataset.recipient || "xushaochun@mapleleaf.net.cn";
-    const subject = `Maple Leaf Edu-Travel enquiry from ${name || "website visitor"}`;
-    const body = [
-      "Hello Maple Leaf Edu-Travel,",
-      "",
-      "I would like to discuss an educational journey.",
-      "",
-      `Name: ${name}`,
-      `School / Organization: ${organization}`,
-      `Email: ${email}`,
-      "",
-      "Learning goals / preferred destination:",
-      message || "(Please add details here.)",
-      "",
-      "Source: https://www.mapleleafedutravel.com/"
-    ].join("\n");
-
-    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    formMessage.dataset.status = "formSent";
-    formMessage.textContent = translations[activeLanguage].formSent;
-  });
-}
 
 function openModal(type) {
   if (!modal || !modalDialog || !modalTitle || !modalBody) return;

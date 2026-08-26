@@ -74,17 +74,17 @@ git branch -f gh-pages main
 git push -f origin gh-pages
 ```
 
-## Enquiry Form
+## Contact Links
 
-The homepage enquiry form uses a `mailto:` workflow. When a visitor clicks **Send Request**, the site opens the visitor's email app with the recipient, subject and message body already filled in.
+The homepage does not use an embedded enquiry form. Contact buttons use a `mailto:` link, so clicking **Contact Us** or **Request a Proposal** opens the visitor's email app.
 
 Current recipient:
 
 ```text
-xushaochun@mapleleaf.net.cn
+edu-travel@mapleleafedutravel.com
 ```
 
-This avoids a backend service during the prototype stage. It does depend on the visitor having an email app configured on their device.
+This avoids browser insecure-form warnings during the prototype stage. It does depend on the visitor having an email app configured on their device.
 
 ## Still Needs Company Confirmation
 

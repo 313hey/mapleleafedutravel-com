@@ -617,6 +617,14 @@ textarea {
   align-items: center;
 }
 
+.cta-layout {
+  grid-template-columns: 1fr;
+}
+
+.cta-copy {
+  max-width: 920px;
+}
+
 .journey-media {
   min-height: 650px;
 }
@@ -747,60 +755,6 @@ textarea {
   color: rgba(247, 244, 238, 0.72);
   font-weight: 500;
   overflow-wrap: anywhere;
-}
-
-.proposal-form {
-  padding: 2rem;
-  border: 1px solid rgba(247, 244, 238, 0.18);
-  background: rgba(247, 244, 238, 0.04);
-}
-
-.proposal-form label {
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.proposal-form label span {
-  display: block;
-  margin-bottom: 0.25rem;
-  color: var(--bg);
-  font-size: 0.82rem;
-  font-weight: 800;
-}
-
-.proposal-form input,
-.proposal-form textarea {
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid rgba(247, 244, 238, 0.34);
-  background: transparent;
-  color: var(--bg);
-  outline: 0;
-  padding: 0.65rem 0;
-}
-
-.proposal-form .honeypot-field {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.proposal-form textarea {
-  resize: vertical;
-}
-
-.proposal-form input:focus,
-.proposal-form textarea:focus {
-  border-color: #d6b777;
-}
-
-.form-message {
-  min-height: 1.4rem;
-  color: #d6b777;
-  font-weight: 800;
 }
 
 .site-footer {
@@ -1797,9 +1751,5 @@ textarea {
 
   .story-cover {
     min-height: 360px;
-  }
-
-  .proposal-form {
-    padding: 1.2rem;
   }
 }
