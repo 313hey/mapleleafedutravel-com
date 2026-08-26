@@ -71,8 +71,9 @@ const translations = {
     fieldEmail: "Email",
     fieldMessage: "Learning goals / preferred destination",
     submitForm: "Send Request",
-    formThanks: "Sending your request. If this is the first website enquiry, please confirm the FormSubmit activation email sent to the recipient inbox.",
+    formThanks: "Sending your request...",
     formSent: "Thank you. Your request has been sent.",
+    formError: "Sorry, your request could not be sent. Please email edu-travel@mapleleafedutravel.com directly.",
     footerTagline: "Educational journeys that connect students, cultures and classrooms.",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
@@ -151,8 +152,9 @@ const translations = {
     fieldEmail: "邮箱",
     fieldMessage: "学习目标 / 意向目的地",
     submitForm: "发送需求",
-    formThanks: "正在发送需求。如这是网站首次提交，请在收件邮箱中确认 FormSubmit 激活邮件。",
+    formThanks: "正在发送需求...",
     formSent: "谢谢，您的需求已发送。",
+    formError: "抱歉，需求暂时未能发送。请直接发送邮件至 edu-travel@mapleleafedutravel.com。",
     footerTagline: "连接学生、文化与课堂的教育旅程。",
     privacyTitle: "Privacy Policy",
     termsTitle: "Terms of Use",
@@ -226,14 +228,43 @@ document.querySelectorAll(".nav-links a, .nav-tools a").forEach((link) => {
 });
 
 if (form && formMessage) {
-  if (new URLSearchParams(window.location.search).get("form") === "sent") {
-    formMessage.dataset.status = "formSent";
-    formMessage.textContent = translations[activeLanguage].formSent;
-  }
-
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
     formMessage.dataset.status = "formThanks";
     formMessage.textContent = translations[activeLanguage].formThanks;
+
+    const submitButton = form.querySelector("[type='submit']");
+    if (submitButton) submitButton.disabled = true;
+
+    try {
+      const data = new FormData(form);
+      const payload = {
+        name: String(data.get("name") || "").trim(),
+        organization: String(data.get("organization") || "").trim(),
+        email: String(data.get("email") || "").trim(),
+        message: String(data.get("message") || "").trim(),
+        honey: String(data.get("_honey") || "").trim()
+      };
+
+      const response = await fetch(form.dataset.endpoint || form.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with ${response.status}`);
+      }
+
+      form.reset();
+      formMessage.dataset.status = "formSent";
+      formMessage.textContent = translations[activeLanguage].formSent;
+    } catch (error) {
+      formMessage.dataset.status = "formError";
+      formMessage.textContent = translations[activeLanguage].formError;
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
   });
 }
 

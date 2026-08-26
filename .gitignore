@@ -1,4 +1,2 @@
-work/
-outputs/
-.DS_Store
-Thumbs.db
+.wrangler/
+cloudflare-worker/.wrangler/

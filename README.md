@@ -76,9 +76,11 @@ git push -f origin gh-pages
 
 ## Enquiry Form
 
-The homepage enquiry form posts to FormSubmit and is configured to forward submissions to `xushaochun@mapleleaf.net.cn`.
+The homepage enquiry form is configured to post to `/api/contact`.
 
-On the first real submission, FormSubmit sends an activation email to that inbox. Open the activation email and confirm it once; after that, future website enquiries will be forwarded to the inbox.
+The backend code is in `cloudflare-worker/`. It receives the form data and forwards the enquiry to `xushaochun@mapleleaf.net.cn` through a Cloudflare Worker Email binding.
+
+Deploy the Worker and route `https://www.mapleleafedutravel.com/api/contact` to it before expecting live form submissions. See `cloudflare-worker/README.md`.
 
 ## Still Needs Company Confirmation
 

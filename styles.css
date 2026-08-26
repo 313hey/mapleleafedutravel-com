@@ -463,6 +463,11 @@ textarea {
   transform: translateX(4px);
 }
 
+.submit-button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
 .section-intro {
   max-width: 880px;
   margin-bottom: clamp(2.4rem, 6vw, 5rem);
