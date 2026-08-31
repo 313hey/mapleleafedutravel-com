@@ -1,95 +1,32 @@
-# Maple Leaf Edu-Travel Website Test
+# React + TypeScript + Vite
 
-Static bilingual test website for Maple Leaf Edu-Travel.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## Open Locally
+Currently, two official plugins are available:
 
-Double-click `index.html`, or open it in any modern browser.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-For a local server preview:
+## React Compiler
 
-```powershell
-python -m http.server 8124
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the Oxlint configuration
+
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
 ```
 
-Then open `http://127.0.0.1:8124/index.html`.
-
-## File Structure
-
-- `index.html` - homepage with the selected public-facing content
-- `about.html` - light internal About page for group background figures
-- `programs.html` - light internal Programs page
-- `stories.html` - light internal Stories page
-- `styles.css` - visual system, responsive layout, editorial imagery and motion styling
-- `script.js` - language switching, mobile menu, scroll storytelling, reveal animation, demo form and policy modal logic
-- `assets/` - logo assets
-- `public/media/` - selected local beta imagery and video assets
-
-## Content Policy
-
-The homepage intentionally uses only the selected concise copy approved in the working brief. The attached English handbook was used only as a factual reference. Long handbook content should not be copied directly onto the homepage.
-
-Keep the following content on internal pages or in reviewed future pages:
-
-- Full history of Maple Leaf Educational Systems
-- Complete city and country lists
-- Nearly 100 schools, 32,000+ students and 5,000+ faculty and staff
-- Detailed Study in China formats
-- Campus facility lists
-- Full service process
-- Tourism licence details
-- Partner information
-- Long corporate descriptions
-
-## Replace Logo
-
-The header currently uses:
-
-- `assets/maple-leaf-crest-web.png`
-- `assets/ml-edu-travel-wordmark-web.png`
-
-Replace those files with approved final logo exports using the same filenames, or update the `<img>` paths in each HTML file.
-
-## Images
-
-The homepage has been paired with local beta imagery under `public/media/`. These files are selected for the test site so the page can be reviewed as a complete visual experience without relying on remote image URLs.
-
-See `public/media/README.md` for the full media map, including hero, program, journey, learning and video story assets.
-
-Before final public launch, replace beta visuals with approved Maple Leaf photography/video after copyright, student consent and company approval are confirmed. Keep the same filenames where possible.
-
-## Modify Text
-
-Homepage English and Chinese text lives in `index.html` and `script.js`. Update both the visible English fallback and the translation keys in `script.js`.
-
-## Deployment
-
-The current GitHub Pages setup publishes from the `gh-pages` branch. After edits:
-
-```powershell
-git add .
-git commit -m "Describe the change"
-git push origin main
-git branch -f gh-pages main
-git push -f origin gh-pages
-```
-
-## Contact Links
-
-The homepage does not use an embedded enquiry form. Contact buttons use a `mailto:` link, so clicking **Contact Us** or **Request a Proposal** opens the visitor's email app.
-
-Current recipient:
-
-```text
-edu-travel@mapleleafedutravel.com
-```
-
-This avoids browser insecure-form warnings during the prototype stage. It does depend on the visitor having an email app configured on their device.
-
-## Still Needs Company Confirmation
-
-- Official logo and visual identity assets
-- Approved photography and permissions
-- Whether `edu-travel@mapleleafedutravel.com` is active
-- Privacy Policy and Terms of Use legal review
-- Final programme naming, scope, pricing and operational responsibilities
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
