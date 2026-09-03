@@ -12,6 +12,13 @@ type Program = {
   overlay?: 'light' | 'medium'
 }
 
+type CityDestination = {
+  name: string
+  description: string
+  programs: string
+  image: string
+}
+
 const programs: Program[] = [
   {
     duration: '1-2 Weeks',
@@ -68,27 +75,27 @@ const trustItems = [
 const testimonials = [
   {
     quote:
-      "People here are really kind and happy. I quickly got along well with others. I was worried that I couldn't adapt it. But when I arrived it, I found everyone here was so kind. I felt relieved.",
-    avatar: 'avatar-clarissa-exact.jpg',
-    name: 'Clarissa Mitchell',
-    meta: 'Student, Grade 11',
-    program: 'Hainan School Immersion',
-  },
-  {
-    quote:
-      'Learning Chinese in China was completely different from learning it in a classroom back home. I could use what I learned every day — ordering food, talking with students, and exploring the city. It made me much more confident speaking Chinese.',
-    avatar: 'avatar-sofia-exact.jpg',
-    name: 'Sofia Ivanova',
+      'People here are really kind and happy. I quickly got along well with others. I was worried that I wouldn’t be able to adapt, but when I arrived, I found everyone here so kind. I felt relieved.',
+    avatar: 'avatar-merin-morajon.png',
+    name: 'Miss Merin Morajon',
     meta: 'Student, Grade 10',
-    program: 'Shenzhen School Immersion',
+    program: 'School Immersion Program',
   },
   {
     quote:
-      'I loved exploring Beijing — walking through the hutongs, visiting the Forbidden City, and trying traditional crafts. My favorite memory was sharing hot pot with my friends and discovering Chinese culture around the table.',
-    avatar: 'avatar-kai-exact.jpg',
-    name: 'Kai Yoshihiro',
-    meta: 'Student, Grade 12',
-    program: 'Beijing Cultural Program',
+      'The teachers here are really kind and supportive. They’re very understanding of students, and they encourage us to follow our dreams.',
+    avatar: 'avatar-sasiya-aeksari.png',
+    name: 'Master Sasiya Aeksari',
+    meta: 'Student, Grade 7',
+    program: 'School Immersion Program',
+  },
+  {
+    quote:
+      'The study tour is a really good way for kids to understand Chinese culture, and it’s also very interesting for us.',
+    avatar: 'avatar-nikita-bilenko.png',
+    name: 'Nikita Bilenko',
+    meta: 'Student, Grade 7',
+    program: 'School Immersion Program',
   },
 ]
 
@@ -137,6 +144,112 @@ const navItems = [
   {
     label: 'ABOUT',
     items: ['About Us', 'Chinese Levels', 'FAQs'],
+  },
+]
+
+const collagePhotos = [
+  {
+    src: 'collage-school-immersion-opt.jpg',
+    alt: 'Students taking part in a hands-on Chinese cultural activity',
+  },
+  {
+    src: 'collage-language-learning-opt.jpg',
+    alt: 'Student receiving guided instruction during an interactive activity',
+  },
+  {
+    src: 'collage-cultural-discovery-opt.jpg',
+    alt: 'International and local students learning together in a classroom',
+  },
+  {
+    src: 'collage-educational-travel-opt.jpg',
+    alt: 'Students participating in an educational journey in China',
+  },
+]
+
+const cityDestinations: CityDestination[] = [
+  {
+    name: 'Shenzhen',
+    description:
+      'Study Chinese and join local school life in Shenzhen, one of China’s leading cities for technology, innovation, and international education.',
+    programs: 'School Immersion · Chinese Language',
+    image: 'city-shenzhen.png',
+  },
+  {
+    name: 'Haikou · Hainan',
+    description:
+      'Study Chinese and experience school life in Haikou, a tropical coastal city known for its warm climate, island culture, and relaxed learning environment.',
+    programs: 'School Immersion · Chinese Language',
+    image: 'city-hainan.png',
+  },
+  {
+    name: 'Wuhan',
+    description:
+      'Study Chinese and join local school life in Wuhan, one of central China’s major centers for education, universities, and student life.',
+    programs: 'School Immersion · Chinese Language',
+    image: 'city-wuhan.png',
+  },
+  {
+    name: 'Dalian',
+    description:
+      'Study Chinese and experience school life in Dalian, a welcoming coastal city known for its international outlook and seaside environment.',
+    programs: 'School Immersion · Chinese Language',
+    image: 'city-dalian.png',
+  },
+  {
+    name: 'Hohhot · Inner Mongolia',
+    description:
+      'Study Chinese and experience school life in Hohhot, with opportunities to discover Inner Mongolia’s grasslands, local communities, and distinctive traditions.',
+    programs: 'School Immersion · Chinese Language',
+    image: 'city-inner-mongolia.png',
+  },
+  {
+    name: 'Shanghai',
+    description:
+      'Join local school life in Shanghai, China’s leading international metropolis and a major center for business, culture, and education.',
+    programs: 'School Immersion',
+    image: 'city-shanghai.png',
+  },
+  {
+    name: 'Chongqing',
+    description:
+      'Join local school life in Chongqing, one of China’s largest cities, known for its dramatic mountain landscape, distinctive urban character, and local culture.',
+    programs: 'School Immersion',
+    image: 'city-chongqing.png',
+  },
+  {
+    name: 'Beijing',
+    description:
+      'Discover Beijing, China’s capital and cultural heart, home to the Forbidden City, hutongs, the Great Wall, and centuries of imperial history.',
+    programs: 'Chinese Cultural Discovery',
+    image: 'city-beijing.png',
+  },
+  {
+    name: 'Xi’an',
+    description:
+      'Discover Xi’an, one of China’s great ancient capitals and home to the Terracotta Warriors, ancient city walls, and Silk Road heritage.',
+    programs: 'Chinese Cultural Discovery',
+    image: 'city-xian.png',
+  },
+  {
+    name: 'Guangzhou',
+    description:
+      'Discover Guangzhou, the heart of Cantonese culture, known for its food, historic neighborhoods, traditional arts, and international connections.',
+    programs: 'Chinese Cultural Discovery',
+    image: 'city-guangzhou.png',
+  },
+  {
+    name: 'Fujian',
+    description:
+      'Discover Fujian, a coastal region known for traditional villages, distinctive architecture, local heritage, tea culture, and southern Chinese traditions.',
+    programs: 'Chinese Cultural Discovery',
+    image: 'city-fujian.png',
+  },
+  {
+    name: 'Hong Kong',
+    description:
+      'Discover Hong Kong, a dynamic international city known for its harbor skyline, East–West culture, urban energy, and distinctive local traditions.',
+    programs: 'Chinese Cultural Discovery',
+    image: 'city-hong-kong.png',
   },
 ]
 
@@ -205,10 +318,7 @@ function Nav() {
     <header className="nav-section">
       <a className="nav-brand" href="#" aria-label="Maple Leaf Edu-Travel home">
         <img src={asset('logo-nav.png')} alt="" />
-        <span>
-          <strong>MAPLE LEAF</strong>
-          <em>EDU-TRAVEL</em>
-        </span>
+        <img className="nav-wordmark" src={asset('logo-nav-new.png')} alt="ML Edu-Travel" />
       </a>
       <nav className="nav-links" aria-label="Primary navigation">
         <ul className="nav-list">
@@ -301,6 +411,37 @@ function StatsSection() {
   )
 }
 
+function ProgramMoments() {
+  return (
+    <section className="moments-section" aria-labelledby="program-moments-title">
+      <div className="moments-copy">
+        <h2 id="program-moments-title">Educational Travel in China</h2>
+        <p className="moments-subheading">
+          With Maple Leaf Edu-Travel, backed by 30+ years of K–12 education experience
+        </p>
+        <ul className="moments-list">
+          <li>
+            Part of{' '}
+            <a href="https://www.mapleleafworldschool.com/" target="_blank" rel="noopener noreferrer">
+              Maple Leaf Educational Systems
+            </a>
+            , established in 1995
+          </li>
+          <li>School immersion, Chinese language, and cultural discovery programs</li>
+          <li>Group programs designed for schools and educational institutions</li>
+          <li>Access to Maple Leaf campuses and local school communities across China</li>
+          <li>End-to-end support covering accommodation, meals, transport, safety, and student services</li>
+        </ul>
+      </div>
+      <div className="moments-collage" aria-label="Maple Leaf Edu-Travel program photography">
+        {collagePhotos.map((photo) => (
+          <img src={asset(photo.src)} alt={photo.alt} key={photo.src} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function Programs() {
   return (
     <section className="programs-section" id="programs">
@@ -317,6 +458,31 @@ function Programs() {
       <div className="program-grid">
         {programs.map((program) => (
           <ProgramCard key={program.title} program={program} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function ChooseCity() {
+  return (
+    <section className="city-section" id="locations" aria-labelledby="city-title">
+      <div className="city-header">
+        <h2 id="city-title">Choose Your City</h2>
+        <p>Choose where you’d like to explore China</p>
+      </div>
+      <div className="city-grid">
+        {cityDestinations.map((destination) => (
+          <article className="city-destination" key={destination.name}>
+            <div className="city-image">
+              <img src={asset(destination.image)} alt="" />
+            </div>
+            <div className="city-copy">
+              <h3>{destination.name}</h3>
+              <p>{destination.description}</p>
+              <strong>{destination.programs}</strong>
+            </div>
+          </article>
         ))}
       </div>
     </section>
@@ -628,7 +794,9 @@ function App() {
       <Nav />
       <Hero />
       <StatsSection />
+      <ProgramMoments />
       <Programs />
+      <ChooseCity />
       <Trust />
       <JourneyMap />
       <Testimonials />
