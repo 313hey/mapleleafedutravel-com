@@ -124,10 +124,6 @@ const navItems = [
     items: ['Intensive Chinese Course', 'HSK Preparation', 'Customized Chinese Course', 'Corporate Chinese Training'],
   },
   {
-    label: 'SCHOOL GROUPS',
-    items: ['School Immersion Programs', 'Chinese Cultural Discovery Programs', 'Chinese Language Programs'],
-  },
-  {
     label: 'PROGRAMS',
     items: [
       'School Immersion Programs',
@@ -143,7 +139,7 @@ const navItems = [
   },
   {
     label: 'ABOUT',
-    items: ['About Us', 'Chinese Levels', 'FAQs'],
+    items: ['Maple Leaf Educational Systems', 'Maple Leaf Edu-Travel', 'Maple Leaf K–12 Chinese', 'FAQs'],
   },
 ]
 
@@ -464,6 +460,27 @@ function Programs() {
   )
 }
 
+function ProgramVideo() {
+  return (
+    <section className="program-video-section" aria-labelledby="program-video-title">
+      <div className="program-video-header">
+        <h2 id="program-video-title">See Our Programs in Action</h2>
+        <p>Hear from students and explore moments from our past programs in China.</p>
+      </div>
+      <div className="program-video-frame">
+        <video
+          controls
+          preload="metadata"
+          poster={asset('programs-in-action-poster.jpg')}
+          aria-label="Maple Leaf Edu-Travel program video"
+        >
+          <source src={asset('programs-in-action.mp4')} type="video/mp4" />
+        </video>
+      </div>
+    </section>
+  )
+}
+
 function ChooseCity() {
   return (
     <section className="city-section" id="locations" aria-labelledby="city-title">
@@ -640,8 +657,9 @@ function Footer() {
           <h2>Maple Leaf</h2>
           <strong>EDU-TRAVEL</strong>
           <p>
-            Maple Leaf Edu-Travel has worked continuously since 1995 to weave critical global learning, strict
-            institutional safety, and authentic homestay relationships into every student journey.
+            Backed by Maple Leaf Educational Systems, founded in 1995, Maple Leaf Edu-Travel draws on over 30 years of
+            K–12 education experience to deliver high-quality study tours and cross-cultural learning programs for
+            students worldwide.
           </p>
         </div>
         <div className="footer-col">
@@ -796,6 +814,7 @@ function App() {
       <StatsSection />
       <ProgramMoments />
       <Programs />
+      <ProgramVideo />
       <ChooseCity />
       <Trust />
       <JourneyMap />
