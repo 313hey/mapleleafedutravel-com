@@ -185,13 +185,6 @@ const cityDestinations: CityDestination[] = [
     image: 'city-wuhan.png',
   },
   {
-    name: 'Dalian',
-    description:
-      'Study Chinese and experience school life in Dalian, a welcoming coastal city known for its international outlook and seaside environment.',
-    programs: 'School Immersion · Chinese Language',
-    image: 'city-dalian.png',
-  },
-  {
     name: 'Hohhot · Inner Mongolia',
     description:
       'Study Chinese and experience school life in Hohhot, with opportunities to discover Inner Mongolia’s grasslands, local communities, and distinctive traditions.',
@@ -227,25 +220,11 @@ const cityDestinations: CityDestination[] = [
     image: 'city-xian.png',
   },
   {
-    name: 'Guangzhou',
-    description:
-      'Discover Guangzhou, the heart of Cantonese culture, known for its food, historic neighborhoods, traditional arts, and international connections.',
-    programs: 'Chinese Cultural Discovery',
-    image: 'city-guangzhou.png',
-  },
-  {
     name: 'Fujian',
     description:
       'Discover Fujian, a coastal region known for traditional villages, distinctive architecture, local heritage, tea culture, and southern Chinese traditions.',
     programs: 'Chinese Cultural Discovery',
     image: 'city-fujian.png',
-  },
-  {
-    name: 'Hong Kong',
-    description:
-      'Discover Hong Kong, a dynamic international city known for its harbor skyline, East–West culture, urban energy, and distinctive local traditions.',
-    programs: 'Chinese Cultural Discovery',
-    image: 'city-hong-kong.png',
   },
 ]
 
