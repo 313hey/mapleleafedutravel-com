@@ -618,8 +618,8 @@ function Cta() {
           <a className="button-primary cta-button" href="#footer">
             Request a Consultation
           </a>
-          <a className="button-secondary cta-button" href="#">
-            Download Brochure
+          <a className="button-secondary cta-button" href="/downloads/maple-leaf-edu-travel-overview.pdf">
+            Download Our Edu-Travel Overview
           </a>
         </div>
       </div>
