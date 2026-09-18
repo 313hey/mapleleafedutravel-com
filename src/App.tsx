@@ -237,28 +237,20 @@ const cityDestinations: CityDestination[] = [
 ]
 
 const languageLocations = [
-  { name: 'Shenzhen', image: 'city-shenzhen.png' },
-  { name: 'Haikou · Hainan', image: 'city-hainan.png' },
-  { name: 'Wuhan', image: 'city-wuhan.png' },
-  { name: 'Dalian', image: 'city-dalian.png' },
-  { name: 'Hohhot · Inner Mongolia', image: 'city-inner-mongolia.png' },
+  { name: 'Shenzhen', image: 'language-location-shenzhen.jpg' },
+  { name: 'Haikou · Hainan', image: 'language-location-hainan.webp' },
+  { name: 'Wuhan', image: 'language-location-wuhan.png' },
+  { name: 'Dalian', image: 'language-location-dalian.jpg' },
+  { name: 'Hohhot · Inner Mongolia', image: 'language-location-hohhot.jpg' },
 ]
 
-const languageLearningItems = [
-  'Practical speaking and listening',
-  'Everyday Chinese communication',
-  'Vocabulary for real-life situations',
-  'Reading and writing appropriate to student level',
-  'Cultural understanding through language',
-]
-
-const languageExperienceItems = [
-  'Classroom lessons',
-  'School campus activities',
-  'Interaction with local students',
-  'Cultural workshops',
-  'City-based language tasks',
-  'Everyday communication practice',
+const languageFacilities = [
+  { image: 'language-facility-restrooms.png', alt: 'Campus restroom facilities', label: 'Restrooms' },
+  { image: 'language-facility-dorm-room.png', alt: 'Student dorm room', label: 'Dormitory' },
+  { image: 'language-facility-dining-hall.png', alt: 'Campus dining hall', label: 'Dining Hall' },
+  { image: 'language-facility-bathroom.png', alt: 'Student bathroom facilities', label: 'Bathroom' },
+  { image: 'language-facility-classroom.webp', alt: 'Maple Leaf classroom', label: 'Classroom' },
+  { image: 'language-facility-student-room.png', alt: 'Student dormitory room', label: 'Dormitory' },
 ]
 
 const languageHighlights = [
@@ -294,10 +286,46 @@ const languageIncludedItems = [
 ]
 
 const sampleLanguageFlow = [
-  { time: 'Morning', activity: 'Chinese Language Class' },
-  { time: 'Midday', activity: 'Lunch / Campus Experience' },
-  { time: 'Afternoon', activity: 'Cultural Workshop or City Learning Activity' },
-  { time: 'Evening', activity: 'Reflection / Group Activity' },
+  { time: 'Morning', activity: 'Chinese Language Classes' },
+  { time: 'Afternoon', activity: 'Chinese Language Classes and Campus Activities' },
+]
+
+const languageFaqs = [
+  {
+    question: 'Can students with no prior Chinese experience join?',
+    answer: 'Yes. Students can join at different proficiency levels. Placement can be arranged based on age and Chinese ability.',
+  },
+  {
+    question: 'Where are the classes held?',
+    answer: 'Chinese lessons and most daily activities take place on selected Maple Leaf school campuses.',
+  },
+  {
+    question: 'What does a typical week include?',
+    answer: 'Programs can include Chinese language classes, cultural workshops, campus activities, selected school classes, and supervised excursions.',
+  },
+  {
+    question: 'Can students join regular Maple Leaf classes?',
+    answer: 'Depending on the campus and program schedule, students may join selected classes such as AI, sports, or other enrichment activities with local students.',
+  },
+  {
+    question: 'Is accommodation available on campus?',
+    answer: 'Yes. Selected programs offer supervised school dormitory accommodation and meals at the school canteen.',
+  },
+  {
+    question: 'Is the program connected with HSK?',
+    answer: 'Maple Leaf Chinese follows a structured K–12 Chinese learning system aligned with HSK standards, and selected Maple Leaf campuses also operate official HSK test centers.',
+  },
+  {
+    question: 'Can the program be customized for school groups?',
+    answer: 'Yes. Program length, Chinese class hours, cultural activities, school immersion, and excursions can be adjusted according to the group’s age, level, and learning goals.',
+  },
+]
+
+const languageFaqProcess = [
+  ['Program & Quotation', 'Confirm the program concept, itinerary, and quotation.'],
+  ['Resource Reservation', 'Secure the required Maple Leaf campus and local program resources.'],
+  ['Student Recruitment', 'Launch enrollment and recruitment through the school or partner organization.'],
+  ['Final Confirmation & Contract', 'Confirm the final number of participants and complete the agreement.'],
 ]
 
 const immersionLocations = [
@@ -1005,6 +1033,33 @@ function FloatingContactBar() {
 }
 
 function ChineseLanguageProgramsPage() {
+  const [activeFacilityIndex, setActiveFacilityIndex] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (activeFacilityIndex === null) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setActiveFacilityIndex(null)
+      if (event.key === 'ArrowLeft') {
+        setActiveFacilityIndex((index) => (index === null ? null : (index - 1 + languageFacilities.length) % languageFacilities.length))
+      }
+      if (event.key === 'ArrowRight') {
+        setActiveFacilityIndex((index) => (index === null ? null : (index + 1) % languageFacilities.length))
+      }
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [activeFacilityIndex])
+
+  const activeFacility = activeFacilityIndex === null ? null : languageFacilities[activeFacilityIndex]
+
   return (
     <>
       <Nav />
@@ -1050,7 +1105,7 @@ function ChineseLanguageProgramsPage() {
         <div className="language-highlights-grid">
           {languageHighlights.map((highlight) => (
             <article className="language-highlight-item" key={highlight.title}>
-              <span />
+              <span className="language-highlight-accent" aria-hidden="true" />
               <h3>{highlight.title}</h3>
               {highlight.support ? <p>{highlight.support}</p> : null}
             </article>
@@ -1070,38 +1125,14 @@ function ChineseLanguageProgramsPage() {
             </p>
           </div>
           <div className="language-maple-leaf-chinese-visual">
-            <img src={asset('maple-leaf-chinese-textbooks.jpg')} alt="Maple Leaf Chinese K–12 textbooks" />
+            <img src={asset('maple-leaf-chinese-textbooks.png')} alt="Maple Leaf Chinese K–12 textbooks" />
           </div>
         </div>
         <div className="language-maple-leaf-chinese-logos" aria-label="Maple Leaf Chinese curriculum logos">
-          <img src={asset('maple-leaf-chinese-logo-clec.jpg')} alt="Center for Language Education and Cooperation" />
-          <img src={asset('maple-leaf-chinese-logo-blcup.jpg')} alt="Beijing Language and Culture University Press" />
+          <img src={asset('maple-leaf-chinese-logo-clec.png')} alt="Center for Language Education and Cooperation" />
+          <img src={asset('maple-leaf-chinese-logo-blcup.png')} alt="Beijing Language and Culture University Press" />
           <img src={asset('maple-leaf-chinese-logo-cti.png')} alt="Chinese Testing International" />
-        </div>
-      </section>
-
-      <section className="language-detail-band">
-        <div className="language-detail-grid">
-          <article>
-            <h2>What Students Learn</h2>
-            <ul>
-              {languageLearningItems.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-          <article>
-            <h2>Learning Experience</h2>
-            <p>
-              Chinese learning extends beyond the classroom, connecting structured lessons with school life, cultural
-              discovery, and real communication in everyday settings.
-            </p>
-            <ul>
-              {languageExperienceItems.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
+          <img src={asset('maple-leaf-chinese-logo-testing-center.jpg')} alt="MLES Chinese Learning and Testing Center" />
         </div>
       </section>
 
@@ -1111,16 +1142,82 @@ function ChineseLanguageProgramsPage() {
           <h2>Learn Across China</h2>
         </div>
         <div className="language-location-grid">
-          {languageLocations.map((location) => (
-            <article className="language-location-card" key={location.name}>
+          {languageLocations.map((location, index) => (
+            <article
+              className={`language-location-card${index === 0 ? ' is-featured' : ''}`}
+              key={location.name}
+            >
               <div>
-                <img src={asset(location.image)} alt="" />
+                <img src={asset(location.image)} alt={`${location.name} campus`} />
               </div>
               <h3>{location.name}</h3>
             </article>
           ))}
         </div>
       </section>
+
+      <section className="language-facilities">
+        <div className="language-facilities-header">
+          <h2>Campus Facilities</h2>
+        </div>
+        <div className="language-facilities-gallery">
+          {languageFacilities.map((facility, index) => (
+            <button
+              className="language-facility-item"
+              key={facility.image}
+              type="button"
+              aria-label={`View ${facility.label} facility photo`}
+              onClick={() => setActiveFacilityIndex(index)}
+            >
+              <figure>
+                <img src={asset(facility.image)} alt={facility.alt} />
+                <span className="language-facility-label">{facility.label}</span>
+              </figure>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {activeFacility ? (
+        <div
+          className="language-facility-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${activeFacility.label} facility photo preview`}
+          onClick={() => setActiveFacilityIndex(null)}
+        >
+          <div className="language-facility-lightbox-inner" onClick={(event) => event.stopPropagation()}>
+            <button
+              className="language-facility-lightbox-close"
+              type="button"
+              aria-label="Close facility photo preview"
+              onClick={() => setActiveFacilityIndex(null)}
+            >
+              ×
+            </button>
+            <button
+              className="language-facility-lightbox-nav"
+              type="button"
+              aria-label="Previous facility photo"
+              onClick={() => setActiveFacilityIndex((index) => (index === null ? null : (index - 1 + languageFacilities.length) % languageFacilities.length))}
+            >
+              ‹
+            </button>
+            <figure>
+              <img src={asset(activeFacility.image)} alt={activeFacility.alt} />
+              <figcaption>{activeFacility.label}</figcaption>
+            </figure>
+            <button
+              className="language-facility-lightbox-nav"
+              type="button"
+              aria-label="Next facility photo"
+              onClick={() => setActiveFacilityIndex((index) => (index === null ? null : (index + 1) % languageFacilities.length))}
+            >
+              ›
+            </button>
+          </div>
+        </div>
+      ) : null}
 
       <section className="language-program-info">
         <div className="language-length-card">
@@ -1129,19 +1226,26 @@ function ChineseLanguageProgramsPage() {
         </div>
         <div className="language-included">
           <h2>What’s Included</h2>
-          <ul>
-            {languageIncludedItems.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <div className="language-included-columns">
+            <ul>
+              {languageIncludedItems.slice(0, 4).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <ul>
+              {languageIncludedItems.slice(4).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
       <section className="language-sample">
         <div className="language-section-header">
           <Label>Sample Learning Experience</Label>
-          <h2>A Typical Day of Language Learning</h2>
-          <p>This is a sample flow for planning conversations, not a fixed itinerary.</p>
+          <h2>A Typical Day at Maple Leaf</h2>
+          <p>A sample day to illustrate the learning experience. Activities may vary by program.</p>
         </div>
         <div className="language-flow">
           {sampleLanguageFlow.map((item) => (
@@ -1153,10 +1257,54 @@ function ChineseLanguageProgramsPage() {
         </div>
       </section>
 
+      <section className="language-faq">
+        <div className="language-faq-header">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        <div className="language-faq-list">
+          {languageFaqs.map((item) => (
+            <details key={item.question}>
+              <summary>
+                <span>{item.question}</span>
+                <span className="language-faq-indicator" aria-hidden="true" />
+              </summary>
+              <div className="language-faq-answer">
+                <p>{item.answer}</p>
+              </div>
+            </details>
+          ))}
+          <details>
+            <summary>
+              <span>What is the process for the program?</span>
+              <span className="language-faq-indicator" aria-hidden="true" />
+            </summary>
+            <div className="language-faq-answer">
+              <ol className="language-faq-steps">
+                {languageFaqProcess.map(([title, description]) => (
+                  <li key={title}>
+                    <strong>{title}</strong>
+                    <span>{description}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </details>
+        </div>
+      </section>
+
       <section className="language-cta">
-        <h2>Plan a Chinese Language Program for Your School</h2>
+        <h2>
+          Plan a Chinese Language Program
+          <br />
+          for Your Students
+        </h2>
+        <p>
+          Tell us your group size, age range, Chinese level, and preferred dates.
+          <br />
+          We’ll help you build a suitable program.
+        </p>
         <a className="button-primary" href="#footer">
-          Request a Consultation
+          Contact Us
         </a>
       </section>
       <Footer />
@@ -1204,7 +1352,7 @@ function SchoolImmersionProgramsPage() {
         </div>
       </section>
 
-      <section className="immersion-intro" id="overview">
+      <section className="immersion-intro school-immersion-intro" id="overview">
         <div>
           <Label>Program Overview</Label>
           <h2>More Than a School Visit</h2>
