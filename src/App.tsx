@@ -466,9 +466,9 @@ function Nav({ schoolImmersion = false }: { schoolImmersion?: boolean }) {
         <img src={asset('logo-nav.png')} alt="" />
         <img className="nav-wordmark" src={asset('logo-nav-new.png')} alt="ML Edu-Travel" />
       </a>
-      <nav className={schoolImmersion ? 'nav-links school-immersion-nav-links' : 'nav-links'} aria-label="Primary navigation">
+      <nav className="nav-links school-immersion-nav-links" aria-label="Primary navigation">
         <ul className="nav-list">
-          {(schoolImmersion ? navItems.filter((item) => !['LOCATIONS', 'CHINESE COURSES', 'PROGRAMS'].includes(item.label)) : navItems).map((item) => (
+          {navItems.filter((item) => !['LOCATIONS', 'CHINESE COURSES', 'PROGRAMS'].includes(item.label)).map((item) => (
             <li className="nav-item" key={item.label}>
               {'href' in item ? (
                 <a className="nav-trigger" href={item.href}>
@@ -483,13 +483,11 @@ function Nav({ schoolImmersion = false }: { schoolImmersion?: boolean }) {
                     </span>
                   </button>
                   <div className="nav-dropdown">
-                    {(schoolImmersion
-                      ? item.label === 'SERVICES'
-                        ? item.items.filter((dropdownItem) => !['Teaching Team', 'Course Materials'].includes(dropdownItem))
-                        : item.label === 'ABOUT'
-                          ? item.items.filter((dropdownItem) => dropdownItem !== 'Maple Leaf K–12 Chinese')
-                          : item.items
-                      : item.items
+                    {(item.label === 'SERVICES'
+                      ? item.items.filter((dropdownItem) => !['Teaching Team', 'Course Materials'].includes(dropdownItem))
+                      : item.label === 'ABOUT'
+                        ? item.items.filter((dropdownItem) => dropdownItem !== 'Maple Leaf K–12 Chinese')
+                        : item.items
                     ).map((dropdownItem) => (
                       <a href={getDropdownHref(dropdownItem)} key={dropdownItem}>
                         {dropdownItem}
