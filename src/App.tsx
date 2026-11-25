@@ -1582,7 +1582,7 @@ function TravelToChinaProgramPage() {
         </div></details>
       </div></section>
 
-      <section className="immersion-cta"><Label>Build Your Journey</Label><h2>Bring Chinese Culture to Life for Your Students</h2><p>Tell us your preferred dates, group size, student ages and learning goals. Our team will design a meaningful cultural journey through China.</p><a className="button-primary" href="#footer">Plan Your Program</a></section>
+      <section className="immersion-cta cultural-cta"><Label>Build Your Journey</Label><h2>Bring Chinese Culture to Life for Your Students</h2><p>Tell us your preferred dates, group size, student ages and learning goals. Our team will design a meaningful cultural journey through China.</p><a className="button-primary" href="#footer">Plan Your Program</a></section>
       <Footer />
       <FloatingContactBar />
     </>

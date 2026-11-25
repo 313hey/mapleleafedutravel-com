@@ -3768,6 +3768,11 @@ button {
 .immersion-cta .section-label p { color: #f2d79b; }
 .immersion-cta .section-label span { background: #f2d79b; }
 .immersion-cta h2 { max-width: 900px; margin: 20px auto 18px; color: #fff8e8; }
+.cultural-cta h2 {
+  max-width: none;
+  font-size: clamp(42px, 4.2vw, 68px);
+  white-space: nowrap;
+}
 .immersion-cta > p { max-width: 610px; margin: 0 auto 30px; color: rgba(255,255,255,.72); }
 .immersion-cta .button-primary { border: 1px solid rgba(242,215,155,.42); background: #fff8e8; color: var(--red); }
 
@@ -3796,6 +3801,7 @@ button {
 }
 
 @media (max-width: 720px) {
+  .cultural-cta h2 { white-space: normal; }
   .cultural-hero .immersion-hero-copy { width: 100%; }
   .cultural-structure-grid { grid-template-columns: 1fr; }
   .cultural-structure-grid article,
