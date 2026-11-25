@@ -141,3 +141,15 @@ html:has(.school-immersion-video[open]) {
     --school-inset-end: 20px;
   }
 }
+
+@media (min-width: 821px) {
+  .school-immersion-nav-links {
+    right: calc(var(--content-inset) + 150px);
+  }
+}
+
+@media (min-width: 1025px) {
+  .school-immersion-nav-links .nav-list {
+    gap: clamp(18px, 2.1vw, 32px);
+  }
+}
