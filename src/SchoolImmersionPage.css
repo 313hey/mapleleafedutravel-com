@@ -79,6 +79,10 @@
   color: #b7bcb1;
 }
 
+.school-immersion-page .immersion-cta h2 {
+  max-width: none;
+}
+
 .school-immersion-page .immersion-cta > p {
   color: #fff8e8;
 }
