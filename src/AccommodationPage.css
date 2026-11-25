@@ -1,0 +1,33 @@
+
+.accommodation-page { background: var(--paper); }
+.accommodation-intro, .accommodation-campus, .accommodation-planning {
+ padding: clamp(48px, 6vw, 86px) max(32px, calc((100% - 1200px) / 2));
+}
+.accommodation-page .section-label { justify-content: flex-start; color: var(--red); }
+.accommodation-page h1, .accommodation-page h2 {
+ font-family: "Instrument Serif", Georgia, serif; color: var(--deep); font-weight: 400; letter-spacing: -.025em;
+}
+.accommodation-intro h1 { margin: 20px 0; font-size: clamp(48px, 6vw, 80px); line-height: 1.02; }
+.accommodation-page h2 { margin: 16px 0; font-size: clamp(38px, 4vw, 56px); line-height: 1.05; }
+.accommodation-page p { max-width: 720px; color: var(--muted); line-height: 1.7; }
+.accommodation-page .section-label p { color: inherit; }
+.accommodation-jump { display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 30px; }
+.accommodation-jump a { color: var(--red); padding-block: 8px; border-bottom: 1px solid #c9b1a4; }
+.accommodation-campus { border-top: 1px solid var(--line); scroll-margin-top: 30px; }
+.accommodation-gallery { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; margin-top: 28px; }
+.accommodation-gallery figure { margin: 0; min-width: 0; }
+.accommodation-gallery .campus-photo-button { aspect-ratio: 4 / 3; }
+.accommodation-gallery figcaption { margin-top: 10px; color: var(--deep); font-size: 13px; line-height: 1.5; }
+.accommodation-planning { background: var(--cream); }
+.accommodation-note { font-size: 13px; }
+.accommodation-planning .button-primary { margin-top: 18px; }
+.accommodation-page a:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+@media(max-width:820px) {
+ .accommodation-gallery { grid-template-columns: repeat(2,minmax(0,1fr)); }
+ .accommodation-gallery figure:first-child { grid-column: 1 / -1; }
+}
+@media(max-width:560px) {
+ .accommodation-intro, .accommodation-campus, .accommodation-planning { padding-inline: 24px; }
+ .accommodation-gallery { gap: 20px 12px; }
+ .accommodation-gallery figcaption { font-size: 12px; }
+}

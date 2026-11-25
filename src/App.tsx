@@ -1,3 +1,4 @@
+import AccommodationPage from './AccommodationPage'
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import './SchoolImmersionPage.css'
@@ -452,6 +453,7 @@ function TestimonialCard({ item }: { item: (typeof testimonials)[number] }) {
 
 function Nav({ schoolImmersion = false }: { schoolImmersion?: boolean }) {
   const getDropdownHref = (dropdownItem: string) => {
+    if (dropdownItem === 'Accommodation') return '/services/accommodation/'
     if (dropdownItem === 'School Immersion Program' || dropdownItem === 'School Immersion Programs') return '/programs/school-immersion'
     if (dropdownItem === 'Travel to China Program') return '/programs/travel-to-china'
     if (dropdownItem === 'Chinese Language Programs') return '/programs/chinese-language'
@@ -1592,6 +1594,7 @@ function TravelToChinaProgramPage() {
 
 function App() {
   const currentPath = window.location.pathname.replace(/\/$/, '') || '/'
+  const isAccommodationPage = currentPath === '/services/accommodation'
   const isChineseLanguagePage = currentPath === '/programs/chinese-language'
   const isSchoolImmersionPage = currentPath === '/programs/school-immersion'
   const isTravelToChinaProgramPage =
@@ -1610,7 +1613,14 @@ function App() {
 
   return (
     <main className={isSchoolImmersionPage ? 'site-page school-immersion-page' : 'site-page'}>
-      {isChineseLanguagePage ? (
+      {isAccommodationPage ? (
+        <>
+          <Nav />
+          <AccommodationPage />
+          <Footer />
+          <FloatingContactBar />
+        </>
+      ) : isChineseLanguagePage ? (
         <ChineseLanguageProgramsPage />
       ) : isTravelToChinaProgramPage ? (
         <TravelToChinaProgramPage />

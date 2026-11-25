@@ -5,6 +5,7 @@ const distDir = path.resolve(__dirname, '..', 'dist');
 const indexPath = path.join(distDir, 'index.html');
 const fallbackPath = path.join(distDir, '404.html');
 const programPages = [
+  'services/accommodation',
   'programs/school-immersion',
   'programs/travel-to-china',
   'programs/chinese-language',
