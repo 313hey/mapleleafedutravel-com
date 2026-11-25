@@ -5,16 +5,27 @@ import './AccommodationPage.css'
 export default function AccommodationPage() {
   return (
     <div className="accommodation-page">
-      <header className="accommodation-intro">
-        <div className="section-label"><span aria-hidden="true" /><p>Accommodation & Campus Facilities</p></div>
-        <h1>A Place to Settle In</h1>
-        <p>Explore student accommodation, campus surroundings and everyday facilities at Maple Leaf schools in China.</p>
+      <section className="immersion-hero accommodation-hero" aria-labelledby="accommodation-title">
+        <img className="immersion-hero-image" src="/images/accommodation/shanghai-1.webp"
+          alt="Gardens and school buildings at Maple Leaf Shanghai campus" fetchPriority="high" />
+        <div className="immersion-hero-shade" />
+        <div className="immersion-hero-copy">
+          <div className="section-label"><span aria-hidden="true" /><p>Accommodation & Campus Facilities</p></div>
+          <h1 id="accommodation-title">A Place to Settle In</h1>
+          <p>Explore student accommodation, campus surroundings and everyday facilities at Maple Leaf schools in China.</p>
+          <div className="hero-actions">
+            <a className="button-primary" href="#accommodation-campuses">Explore Campuses</a>
+            <a className="button-secondary" href="#footer">Plan Your Stay</a>
+          </div>
+        </div>
+      </section>
+      <div className="accommodation-intro" id="accommodation-campuses">
         <nav className="accommodation-jump" aria-label="Browse campus accommodation">
           {['Shanghai', 'Shenzhen', 'Hainan', 'Chongqing', 'Tianjin', 'Wuhan'].map((city) => (
             <a key={city} href={'#stay-' + (city === 'Tianjin' ? 'tianjin-teda' : city.toLowerCase())}>{city}</a>
           ))}
         </nav>
-      </header>
+      </div>
       {accommodationCampuses.map((campus) => (
         <section className="accommodation-campus" id={'stay-' + campus.id} key={campus.id} aria-labelledby={'stay-title-' + campus.id}>
           <header>

@@ -7,11 +7,16 @@
 .accommodation-page h1, .accommodation-page h2 {
  font-family: "Instrument Serif", Georgia, serif; color: var(--deep); font-weight: 400; letter-spacing: -.025em;
 }
-.accommodation-intro h1 { margin: 20px 0; font-size: clamp(48px, 6vw, 80px); line-height: 1.02; }
+.accommodation-page .accommodation-hero h1 { color: #fff8e8; }
+.accommodation-page .accommodation-hero .section-label { color: #f2d79b; }
+.accommodation-page .accommodation-hero .immersion-hero-copy > p { color: rgba(255,255,255,.88); line-height: 1.6; }
+.accommodation-hero { background: var(--deep); }
+.accommodation-hero .hero-actions { margin-top: 30px; }
+.accommodation-intro { padding-block: 24px; scroll-margin-top: 24px; }
 .accommodation-page h2 { margin: 16px 0; font-size: clamp(38px, 4vw, 56px); line-height: 1.05; }
 .accommodation-page p { max-width: 720px; color: var(--muted); line-height: 1.7; }
 .accommodation-page .section-label p { color: inherit; }
-.accommodation-jump { display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 30px; }
+.accommodation-jump { display: flex; flex-wrap: wrap; gap: 14px 28px; margin: 0; }
 .accommodation-jump a { color: var(--red); padding-block: 8px; border-bottom: 1px solid #c9b1a4; }
 .accommodation-campus { border-top: 1px solid var(--line); scroll-margin-top: 30px; }
 .accommodation-gallery { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; margin-top: 28px; }
