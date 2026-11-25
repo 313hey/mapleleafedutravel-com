@@ -12,12 +12,35 @@
 .accommodation-page .accommodation-hero .immersion-hero-copy > p { color: rgba(255,255,255,.88); line-height: 1.6; }
 .accommodation-hero { background: var(--deep); }
 .accommodation-hero .hero-actions { margin-top: 30px; }
-.accommodation-intro { padding-block: 24px; scroll-margin-top: 24px; }
+.accommodation-intro { padding-block: 18px; scroll-margin-top: 24px; }
 .accommodation-page h2 { margin: 16px 0; font-size: clamp(38px, 4vw, 56px); line-height: 1.05; }
 .accommodation-page p { max-width: 720px; color: var(--muted); line-height: 1.7; }
 .accommodation-page .section-label p { color: inherit; }
-.accommodation-jump { display: flex; flex-wrap: wrap; gap: 14px 28px; margin: 0; }
-.accommodation-jump a { color: var(--red); padding-block: 8px; border-bottom: 1px solid #c9b1a4; }
+.accommodation-jump { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin: 0; }
+.accommodation-jump a {
+ position: relative;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ min-height: 64px;
+ padding: 14px 8px;
+ color: var(--deep);
+ font-family: "Instrument Serif", Georgia, serif;
+ font-size: 25px;
+ line-height: 1.2;
+ transition: color .18s ease, background-color .18s ease;
+}
+.accommodation-jump a + a::before {
+ content: "";
+ position: absolute;
+ left: 0;
+ top: 50%;
+ height: 20px;
+ border-left: 1px solid var(--line);
+ transform: translateY(-50%);
+}
+.accommodation-jump a:hover,
+.accommodation-jump a:focus-visible { color: var(--red); background: #f3eee7; }
 .accommodation-campus { border-top: 1px solid var(--line); scroll-margin-top: 30px; }
 .accommodation-gallery { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; margin-top: 28px; }
 .accommodation-gallery figure { margin: 0; min-width: 0; }
@@ -32,6 +55,9 @@
  .accommodation-gallery figure:first-child { grid-column: 1 / -1; }
 }
 @media(max-width:560px) {
+ .accommodation-jump { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 4px; margin-right: 46px; }
+ .accommodation-jump a { min-height: 52px; padding-inline: 3px; font-size: clamp(18px, 5vw, 22px); }
+ .accommodation-jump a:nth-child(4)::before { display: none; }
  .accommodation-intro, .accommodation-campus, .accommodation-planning { padding-inline: 24px; }
  .accommodation-gallery { gap: 20px 12px; }
  .accommodation-gallery figcaption { font-size: 12px; }
