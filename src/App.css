@@ -2141,6 +2141,19 @@ button {
   color: #fff8e8;
 }
 
+@media (min-width: 721px) {
+  .language-cta h2 {
+    width: 100%;
+    max-width: none;
+    font-size: clamp(42px, 4.2vw, 68px);
+    white-space: nowrap;
+  }
+
+  .language-cta h2 br {
+    display: none;
+  }
+}
+
 .language-cta > p {
   width: min(100%, 660px);
   max-width: 660px;
