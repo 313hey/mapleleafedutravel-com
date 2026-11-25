@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
+import './SchoolImmersionPage.css'
+import CampusNetwork from './CampusNetwork'
+import CampusLifeGallery from './CampusLifeGallery'
+import StudentSupportSection from './StudentSupportSection'
 
 const asset = (name: string) => `/figma-assets/${name}`
 
@@ -328,99 +332,25 @@ const languageFaqProcess = [
   ['Final Confirmation & Contract', 'Confirm the final number of participants and complete the agreement.'],
 ]
 
-const immersionLocations = [
-  {
-    name: 'SHENZHEN',
-    image: '/images/campuses/shenzhen.jpg',
-    levels: 'Primary · Middle · High School',
-    focus: 'Technology & Innovation',
-    description: 'Study at the home campus of Maple Leaf Education Group and explore Shenzhen’s technology and innovation ecosystem.',
-  },
-  {
-    name: 'CHONGQING',
-    image: '/images/campuses/chongqing-cropped.jpg',
-    levels: 'Kindergarten · Primary · Middle · High School',
-    focus: 'Culture & Urban Exploration',
-    description: 'Experience school life while discovering Chongqing’s distinctive landscape, three-dimensional cityscape and urban development.',
-  },
-  {
-    name: 'WUHAN',
-    image: '/images/campuses/wuhan.jpg',
-    levels: 'Primary · Middle · High School · School for Foreign Nationals',
-    focus: 'International Education & Sports',
-    description: 'Learn in a multicultural campus environment with international education resources and access to a professional-standard ice hockey facility.',
-  },
-  {
-    name: 'SHANGHAI',
-    image: '/images/campuses/shanghai.jpg',
-    levels: 'High School',
-    focus: 'Global City & Culture',
-    description: 'Combine high school learning with the culture, international outlook and modern development of Shanghai.',
-  },
-  {
-    name: 'HAINAN',
-    image: '/images/campuses/hainan.webp',
-    levels: 'Kindergarten · Primary · Middle · High School',
-    focus: 'Boarding Life & Tropical China',
-    description: 'Experience boarding school life while discovering the culture, nature and tropical environment of China’s island province.',
-  },
-  {
-    name: 'DALIAN',
-    image: '/images/campuses/dalian.jpg',
-    levels: 'Kindergarten · Primary · Middle · High School · School for Foreign Nationals',
-    focus: 'Ice & Snow · Coastal China',
-    description: 'Experience northern China’s snow-covered winter landscapes alongside a multicultural campus experience in one of the country’s leading coastal cities.',
-  },
-]
-
-const immersionHighlights = [
-  ['REAL SCHOOL ACCESS', 'Learn inside established Maple Leaf K–12 campuses—not temporary camp venues.'],
-  ['CLASSROOM LEARNING', 'Join selected school classes, workshops and project-based activities based on age and academic focus.'],
-  ['STUDENT CONNECTION', 'Learn, collaborate and communicate with Maple Leaf students through structured buddy activities.'],
-  ['CHINESE LANGUAGE & CULTURE', 'Develop practical Chinese skills through language classes, cultural workshops and everyday interaction.'],
-  ['TECHNOLOGY & CREATIVITY', 'Explore selected experiences in AI, science, technology, arts and creative project learning.'],
-  ['CHINA BEYOND THE CAMPUS', 'Connect campus learning with visits to Chinese cities, universities, cultural landmarks and leading companies.'],
-]
-
-const immersionProgramSteps = [
+const immersionLearningDimensions = [
   {
     title: 'LEARN ON CAMPUS',
-    description: 'Join selected classes, workshops and hands-on projects inside real Maple Leaf K–12 campuses.',
+    description: 'Join real classes, Chinese language lessons, academic workshops and hands-on projects inside established Maple Leaf campuses.',
     image: '/images/23fa876da8f8c75ca64dc01ecbe75658.jpg',
     alt: 'Students taking part in a classroom language activity',
   },
   {
     title: 'CONNECT THROUGH SCHOOL LIFE',
-    description: 'Learn alongside Maple Leaf students through buddy activities, clubs and shared campus experiences.',
+    description: 'Build international friendships through student buddy activities, sports, cultural experiences and collaborative learning.',
     image: '/images/71a20401bd60f2aa42c5ab07ff17dd1d.jpg',
     alt: 'International and Maple Leaf students together on campus',
   },
   {
-    title: 'DISCOVER CHINA BEYOND SCHOOL',
-    description: 'Extend learning into Chinese cities, universities, cultural landmarks and leading companies.',
+    title: 'DISCOVER CHINA',
+    description: 'Explore Chinese cities, universities, cultural landmarks and leading technology companies beyond the classroom.',
     image: '/images/2f5f24a9fddf8b12eb86252f6e5adf8c.jpg',
     alt: 'Students exploring a coastal environment in China',
   },
-]
-
-const immersionCampusLifeImages = [
-  { src: '/images/campus-life/classroom-learning.webp', alt: 'Maple Leaf students learning together in a classroom', className: 'immersion-campus-life-feature' },
-  { src: '/images/campus-life/ai-learning-space.jpg', alt: 'AI and technology learning space' },
-  { src: '/images/campus-life/swimming-pool.jpg', alt: 'Outdoor campus swimming pool' },
-  { src: '/images/campus-life/ice-sports-center.jpg', alt: 'Maple Leaf international ice sports center' },
-  { src: '/images/campus-life/auditorium.jpg', alt: 'Campus auditorium and performance space' },
-  { src: '/images/campus-life/boarding-room.png', alt: 'Student boarding room with study space' },
-  { src: '/images/campus-life/dining-hall.png', alt: 'Bright campus dining hall' },
-]
-
-const immersionSupportItems = [
-  'Supervised student activities',
-  'Controlled access to campus or accommodation areas',
-  'Daily meals, with halal options available upon request',
-  'Licensed transportation providers',
-  'Established risk management and emergency response procedures',
-  '24-hour support and residential supervision where applicable',
-  'Coordination throughout the program',
 ]
 
 const culturalHighlights = [
@@ -520,11 +450,13 @@ function TestimonialCard({ item }: { item: (typeof testimonials)[number] }) {
   )
 }
 
-function Nav() {
+function Nav({ schoolImmersion = false }: { schoolImmersion?: boolean }) {
   const getDropdownHref = (dropdownItem: string) => {
     if (dropdownItem === 'School Immersion Programs') return '/programs/school-immersion'
     if (dropdownItem === 'Travel to China Program') return '/programs/travel-to-china'
     if (dropdownItem === 'Chinese Language Programs') return '/programs/chinese-language'
+    if (schoolImmersion && dropdownItem === 'FAQs') return '#school-immersion-faq'
+    if (schoolImmersion && ['Accommodation', 'Meals', 'Safety & Student Support'].includes(dropdownItem)) return '#student-support'
     return '/#programs'
   }
 
@@ -874,7 +806,7 @@ function Cta() {
   )
 }
 
-function Footer() {
+function Footer({ schoolImmersion = false }: { schoolImmersion?: boolean }) {
   return (
     <footer className="footer-section" id="footer">
       <img className="footer-logo" src={asset('logo-footer.png')} alt="" />
@@ -890,11 +822,11 @@ function Footer() {
         </div>
         <div className="footer-col">
           <h3>Quick Navigation</h3>
-          <a href="#trust">About Us</a>
-          <a href="#programs">School Immersion Program</a>
-          <a href="#programs">Cultural Discovery Program</a>
-          <a href="#programs">Chinese Language Program</a>
-          <a href="#programs">Custom Tours</a>
+          <a href={schoolImmersion ? '/#trust' : '#trust'}>About Us</a>
+          <a href={schoolImmersion ? '/programs/school-immersion/' : '#programs'}>School Immersion Program</a>
+          <a href={schoolImmersion ? '/programs/travel-to-china/' : '#programs'}>Cultural Discovery Program</a>
+          <a href={schoolImmersion ? '/programs/chinese-language/' : '#programs'}>Chinese Language Program</a>
+          <a href={schoolImmersion ? '/#programs' : '#programs'}>Custom Tours</a>
         </div>
         <div className="footer-col social-col">
           <h3>Follow Our Trails</h3>
@@ -950,10 +882,17 @@ function Footer() {
       </div>
       <div className="footer-bottom">
         <p>© 2026 Maple Leaf Edu-Travel. All rights reserved.</p>
-        <div>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
+        {schoolImmersion ? (
+          <div aria-label="Legal information">
+            <span>Privacy Policy</span>
+            <span>Terms of Service</span>
+          </div>
+        ) : (
+          <div>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        )}
       </div>
     </footer>
   )
@@ -1314,27 +1253,26 @@ function ChineseLanguageProgramsPage() {
 }
 
 function SchoolImmersionProgramsPage() {
-  const [activeVideoId, setActiveVideoId] = useState<string | null>(null)
-  const pastProgramVideos = ['5QuYY5JJWiY', '2wOgGy-NUYQ', 'BFdpGEOlnjk']
+  const [activeVideo, setActiveVideo] = useState<{ id: string; title: string } | null>(null)
+  const videoDialog = useRef<HTMLDialogElement>(null)
+  const pastProgramVideos = [
+    { id: '5QuYY5JJWiY', title: 'Hainan Study Tour in China | Russian Students, Sanya Sea & AI Experience' },
+    { id: '2wOgGy-NUYQ', title: 'KIS’s Shenzhen Study Tour' },
+    { id: 'BFdpGEOlnjk', title: 'Thai Students Complete an Unforgettable Study Tour in Hainan, China' },
+  ]
 
   useEffect(() => {
-    if (!activeVideoId) return
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setActiveVideoId(null)
-    }
-
-    document.addEventListener('keydown', handleEscape)
-    return () => document.removeEventListener('keydown', handleEscape)
-  }, [activeVideoId])
+    if (activeVideo && !videoDialog.current?.open) videoDialog.current?.showModal()
+  }, [activeVideo])
 
   return (
     <>
-      <Nav />
+      <Nav schoolImmersion />
       <section className="immersion-hero">
         <img
           className="immersion-hero-image"
           src={asset('program-school-exact.png')}
+          fetchPriority="high"
           alt="Students taking part in a Maple Leaf school immersion program"
         />
         <div className="immersion-hero-shade" />
@@ -1346,8 +1284,8 @@ function SchoolImmersionProgramsPage() {
             at selected Maple Leaf schools.
           </p>
           <div className="hero-actions">
-            <a className="button-primary" href="#overview">Explore Campuses</a>
-            <a className="button-secondary" href="#footer">Plan Your Program</a>
+            <a className="button-primary" href="#campus-network">Explore Campuses</a>
+            <a className="button-secondary" href="#school-immersion-inquiry">Plan Your Program</a>
           </div>
         </div>
       </section>
@@ -1359,13 +1297,14 @@ function SchoolImmersionProgramsPage() {
           <img
             className="immersion-intro-image"
             src="/images/school-immersion-students.jpg"
+            loading="lazy"
+            decoding="async"
             alt="Two students taking part in a Maple Leaf school immersion program"
           />
         </div>
         <div className="immersion-intro-copy">
           <p className="immersion-intro-lede">
-            Students become part of campus life through a carefully designed combination of classroom learning,
-            student interaction, Chinese language and culture, campus activities and local exploration.
+            Experience authentic school life, build international friendships and discover China beyond the classroom.
           </p>
           <div className="immersion-glance">
             <h3>Program at a Glance</h3>
@@ -1386,121 +1325,38 @@ function SchoolImmersionProgramsPage() {
                 <dt>Group Size</dt>
                 <dd>From 20 Students</dd>
               </div>
-              <div className="immersion-glance-wide">
-                <dt>Typical Program Components</dt>
-                <dd>Classes · Student Interaction · Campus Activities · Accommodation · Meals · Local Exploration · Program Support</dd>
-              </div>
             </dl>
-            <p className="immersion-glance-note">
-              Program content and inclusions are tailored to each group and confirmed in the final proposal.
-            </p>
           </div>
         </div>
       </section>
 
-      <section className="immersion-highlights">
-        <div className="immersion-section-heading">
-          <Label>Program Highlights</Label>
-          <h2>What Students Can Experience</h2>
-        </div>
-        <div className="immersion-highlight-grid">
-          {immersionHighlights.map(([title, text], index) => (
-            <article key={title}>
-              <span>0{index + 1}</span>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="immersion-fit">
-        <div className="immersion-fit-heading">
-          <Label>How the Program Works</Label>
-          <h2>One Program. Three Dimensions of Learning.</h2>
+      <section className="immersion-learning" aria-labelledby="immersion-learning-title">
+        <div className="immersion-learning-heading">
+          <Label>The Learning Experience</Label>
+          <h2 id="immersion-learning-title">Learn. Connect. Discover.</h2>
+          <p>Three dimensions of an authentic school immersion experience.</p>
         </div>
         <div className="immersion-program-steps">
-          {immersionProgramSteps.map((step, index) => (
+          {immersionLearningDimensions.map((step, index) => (
             <article key={step.title}>
-              <img src={step.image} alt={step.alt} />
+              <img src={step.image} alt={step.alt} loading="lazy" decoding="async" />
               <div className="immersion-program-step-copy">
-                <span>0{index + 1}</span>
-                <h3>{step.title}</h3>
+                <h3><span>0{index + 1} —</span> {step.title}</h3>
                 <p>{step.description}</p>
               </div>
             </article>
           ))}
         </div>
         <p className="immersion-program-note">
-          Each journey is tailored to the group’s age, academic interests, destination, travel dates and learning goals.
+          Every program is tailored to the group’s age, academic interests, destination, travel dates and learning goals.
         </p>
       </section>
 
-      <section className="immersion-locations">
-        <div className="immersion-section-heading">
-          <Label>Featured Campuses</Label>
-          <h2>Choose Your Campus</h2>
-          <p>School immersion programs are available at selected Maple Leaf campuses across China, offering different academic, cultural and regional experiences.</p>
-        </div>
-        <div className="immersion-location-grid">
-          {immersionLocations.map((location) => (
-            <article key={location.name}>
-              <img src={location.image} alt={`${location.name} Maple Leaf campus`} />
-              <h3>{location.name}</h3>
-              <p className="immersion-location-levels">{location.levels}</p>
-              <p className="immersion-location-focus">{location.focus}</p>
-              <p>{location.description}</p>
-            </article>
-          ))}
-        </div>
-        <div className="immersion-location-footer">
-          <a className="button-primary" href="/#locations">View Campus Network</a>
-          <p>Campus availability, eligible age groups and program experiences are subject to school calendars and individual campus arrangements.</p>
-        </div>
-      </section>
+      <CampusNetwork />
 
-      <section className="immersion-campus-life">
-        <div className="immersion-campus-life-intro">
-          <div>
-            <Label>Campus Life</Label>
-            <h2>Learn, Live, Play &amp; Create</h2>
-          </div>
-          <div>
-            <p>Depending on the selected campus, students may have access to a wide range of academic, creative, sports and residential facilities.</p>
-            <p className="immersion-campus-life-facilities">Classrooms · Libraries · Science Labs · AI Learning Spaces · Arts Facilities · Sports Fields · Swimming Pools · Golf Facilities · Ice Hockey Facilities · Boarding Houses</p>
-          </div>
-        </div>
-        <div className="immersion-campus-life-gallery">
-          {immersionCampusLifeImages.map((image) => (
-            <figure className={image.className} key={image.src}>
-              <img src={image.src} alt={image.alt} />
-            </figure>
-          ))}
-        </div>
-        <p className="immersion-campus-life-note">Facilities and access arrangements vary by campus. Some facilities are available only as part of scheduled activities.</p>
-      </section>
+      <CampusLifeGallery />
 
-      <section className="immersion-included">
-        <div className="immersion-support-intro">
-          <Label>Accommodation &amp; Student Support</Label>
-          <h2>Designed for Student Groups</h2>
-          <p>Depending on the destination and program format, students may stay in Maple Leaf boarding facilities or carefully selected hotels.</p>
-        </div>
-        <div className="immersion-support-main-image">
-          <img src="/images/student-support/cafeteria-students.jpg" alt="Students dining together in a Maple Leaf campus cafeteria" />
-        </div>
-        <div className="immersion-support-list">
-          <p>Program support may include:</p>
-          <ul>
-            {immersionSupportItems.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-        </div>
-        <div className="immersion-support-secondary-images">
-          <img src="/images/student-support/boarding-room-secondary.png" alt="Maple Leaf student accommodation room" />
-          <img src="/images/student-support/laundry-facility.png" alt="Student accommodation laundry facility" />
-        </div>
-        <p className="immersion-support-note">Accommodation, meals, transportation, supervision arrangements and safety procedures vary by campus and program. Full details will be confirmed in the final proposal.</p>
-      </section>
+      <StudentSupportSection />
 
       <section className="immersion-day immersion-past-programs">
         <div className="immersion-section-heading">
@@ -1508,17 +1364,17 @@ function SchoolImmersionProgramsPage() {
           <h2>Previous Student Experiences</h2>
         </div>
         <div className="immersion-video-grid">
-          {pastProgramVideos.map((videoId, index) => (
+          {pastProgramVideos.map((video) => (
             <button
               className="immersion-video-item"
-              key={videoId}
+              key={video.id}
               type="button"
-              aria-label={`Play video ${index + 1}`}
-              onClick={() => setActiveVideoId(videoId)}
+              aria-label={`Play ${video.title}`}
+              onClick={() => setActiveVideo(video)}
             >
               <span className="immersion-video-frame">
                 <img
-                  src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+                  src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
                   alt=""
                   loading="lazy"
                 />
@@ -1529,23 +1385,31 @@ function SchoolImmersionProgramsPage() {
         </div>
       </section>
 
-      {activeVideoId && (
-        <div className="immersion-video-modal" role="dialog" aria-modal="true" aria-label="YouTube video player" onClick={() => setActiveVideoId(null)}>
-          <div className="immersion-video-modal-inner" onClick={(event) => event.stopPropagation()}>
-            <button className="immersion-video-close" type="button" aria-label="Close video" onClick={() => setActiveVideoId(null)}>×</button>
+      {activeVideo && (
+        <dialog
+          ref={videoDialog}
+          className="immersion-video-modal school-immersion-video"
+          aria-label={activeVideo.title}
+          onClose={() => setActiveVideo(null)}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) event.currentTarget.close()
+          }}
+        >
+          <div className="immersion-video-modal-inner">
+            <button className="immersion-video-close" type="button" aria-label="Close video" onClick={() => videoDialog.current?.close()}>×</button>
             <div className="immersion-video-embed">
               <iframe
-                src={`https://www.youtube-nocookie.com/embed/${activeVideoId}?autoplay=1&rel=0`}
-                title="Past program video"
+                src={`https://www.youtube-nocookie.com/embed/${activeVideo.id}?autoplay=1&rel=0`}
+                title={activeVideo.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               />
             </div>
           </div>
-        </div>
+        </dialog>
       )}
 
-      <section className="immersion-faq">
+      <section className="immersion-faq" id="school-immersion-faq">
         <div className="immersion-section-heading">
           <Label>FAQ</Label>
           <h2>Frequently Asked Questions</h2>
@@ -1616,13 +1480,13 @@ function SchoolImmersionProgramsPage() {
         </div>
       </section>
 
-      <section className="immersion-cta">
+      <section className="immersion-cta" id="school-immersion-inquiry">
         <Label>Build Your Program</Label>
         <h2>Bring Your Students into a Real Chinese School</h2>
         <p>Tell us your preferred dates, group size, student ages and learning goals. Our team will recommend a suitable campus and program format.</p>
         <a className="button-primary" href="#footer">Contact Us</a>
       </section>
-      <Footer />
+      <Footer schoolImmersion />
       <FloatingContactBar />
     </>
   )
@@ -1726,8 +1590,19 @@ function App() {
   const isTravelToChinaProgramPage =
     currentPath === '/programs/travel-to-china' || currentPath === '/programs/chinese-cultural-discovery'
 
+  useEffect(() => {
+    if (currentPath !== '/') return
+    const target = window.location.hash.slice(1)
+    if (target !== 'programs' && target !== 'trust') return
+    const reveal = () => document.getElementById(target)?.scrollIntoView({ behavior: 'instant' })
+    reveal()
+    if (document.readyState === 'complete') return
+    window.addEventListener('load', reveal, { once: true })
+    return () => window.removeEventListener('load', reveal)
+  }, [currentPath])
+
   return (
-    <main className="site-page">
+    <main className={isSchoolImmersionPage ? 'site-page school-immersion-page' : 'site-page'}>
       {isChineseLanguagePage ? (
         <ChineseLanguageProgramsPage />
       ) : isTravelToChinaProgramPage ? (

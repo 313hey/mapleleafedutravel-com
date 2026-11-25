@@ -1,0 +1,117 @@
+.campus-photo-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: var(--paper);
+  cursor: zoom-in;
+  touch-action: manipulation;
+}
+
+.campus-photo-button:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 4px;
+}
+
+.campus-photo-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .24s ease;
+}
+
+.campus-photo-expand {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  background: rgba(21, 47, 30, .84);
+  color: white;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .campus-photo-button:hover img { transform: scale(1.035); }
+  .campus-photo-button:hover .campus-photo-expand { background: var(--red); }
+}
+
+.campus-photo-lightbox {
+  --yarl__container_background_color: transparent;
+  --yarl__button_filter: none;
+  --yarl__icon_size: 25px;
+  --yarl__color_button: #fffaf5;
+  --yarl__color_button_disabled: #a29c96;
+  background: rgba(13, 22, 17, .95);
+  color: #fffaf5;
+}
+
+.campus-photo-lightbox .yarl__container {
+  top: calc(62px + env(safe-area-inset-top));
+  bottom: calc(72px + env(safe-area-inset-bottom));
+  overflow: visible;
+}
+
+.campus-photo-lightbox .yarl__toolbar {
+  position: fixed;
+  z-index: 1;
+  top: calc(7px + env(safe-area-inset-top));
+  right: calc(10px + env(safe-area-inset-right));
+  gap: 5px;
+  padding: 0;
+}
+
+.campus-photo-lightbox .yarl__button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.campus-photo-lightbox .yarl__button:focus-visible {
+  outline: 2px solid #fffaf5;
+  outline-offset: -2px;
+}
+
+.campus-photo-lightbox .yarl__navigation_prev,
+.campus-photo-lightbox .yarl__navigation_next {
+  padding: 10px;
+  background: rgba(13, 22, 17, .78);
+}
+
+.campus-photo-lightbox .yarl__navigation_prev { left: max(10px, env(safe-area-inset-left)); }
+.campus-photo-lightbox .yarl__navigation_next { right: max(10px, env(safe-area-inset-right)); }
+
+.campus-photo-lightbox-details {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: calc(15px + env(safe-area-inset-bottom));
+  left: max(20px, env(safe-area-inset-left));
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 250, 245, .26);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(23px, 3vw, 32px);
+  line-height: 1.12;
+}
+
+.campus-photo-counter {
+  font: 600 13px/1.2 Inter, system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campus-photo-button img { transition: none; }
+}
+
+@media (max-width: 560px) {
+  .campus-photo-expand { right: auto; bottom: 7px; left: 7px; width: 30px; height: 30px; }
+}

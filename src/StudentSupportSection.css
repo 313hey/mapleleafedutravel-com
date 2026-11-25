@@ -1,0 +1,146 @@
+.student-support {
+  --support-ivory: #fff8e8;
+  --support-text: #e7ebe1;
+  padding: clamp(54px, 6vw, 88px) clamp(24px, 6vw, 88px);
+  background: var(--deep);
+  color: var(--support-text);
+}
+
+.student-support-inner {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.student-support-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(30px, 4vw, 60px);
+}
+
+.student-support-heading {
+  text-align: left;
+}
+
+.student-support-heading .section-label {
+  justify-content: flex-start;
+  color: var(--gold);
+}
+
+.student-support-heading h2 {
+  margin: 14px 0 0;
+  color: var(--support-ivory);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(40px, 3.45vw, 56px);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1.04;
+}
+
+.student-support-heading > p {
+  max-width: 470px;
+  margin: 14px 0 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.student-support-services {
+  display: grid;
+  gap: clamp(13px, 1.5vw, 20px);
+  margin: clamp(22px, 2.5vw, 34px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.student-support-services li {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+
+.student-support-services svg {
+  margin-top: 1px;
+  color: var(--gold);
+}
+
+.student-support-services h3 {
+  margin: 0 0 3px;
+  color: var(--support-ivory);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.student-support-services p {
+  max-width: 430px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.student-support-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: clamp(12px, 1.5vw, 20px);
+}
+
+.student-support-gallery figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.student-support-gallery figure:first-child {
+  grid-column: 1 / -1;
+}
+
+.student-support-gallery figure:first-child .campus-photo-button {
+  aspect-ratio: 16 / 10;
+}
+
+.student-support-gallery figure:first-child img {
+  object-position: center 44%;
+}
+
+.student-support-gallery .campus-photo-button:focus-visible {
+  outline-color: var(--gold);
+}
+
+.student-support-gallery figcaption {
+  margin-top: 7px;
+  color: var(--support-text);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.student-support-note {
+  margin: clamp(26px, 3vw, 40px) 0 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 248, 232, .22);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.65;
+}
+
+@media (min-width: 1025px) {
+  .student-support { padding-inline: 120px; }
+}
+
+@media (min-width: 821px) and (max-width: 1024px) {
+  .student-support { padding-right: 120px; }
+}
+
+@media (max-width: 820px) {
+  .student-support-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .student-support-heading h2 { font-size: 35px; }
+}
+
+@media (max-width: 560px) {
+  .student-support-content,
+  .student-support-note { max-width: calc(100% - 46px); }
+}

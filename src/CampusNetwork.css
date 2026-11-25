@@ -1,0 +1,465 @@
+.campus-network {
+  --campus-rule: #ded4c7;
+  --campus-pin-muted: #746c65;
+  padding: clamp(64px, 7vw, 110px) clamp(20px, 6vw, 92px);
+  background: var(--paper);
+}
+
+.campus-network-inner {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.campus-network-heading {
+  margin-bottom: clamp(25px, 3.4vw, 48px);
+}
+
+.campus-network-heading .section-label {
+  justify-content: flex-start;
+  color: var(--red);
+  letter-spacing: .08em;
+}
+
+.campus-network-heading h2,
+.campus-network-card h3,
+.campus-network-featured h3,
+.campus-network-grid h4 {
+  color: var(--deep);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+.campus-network-heading h2 {
+  margin: 12px 0 0;
+  font-size: clamp(46px, 5.8vw, 76px);
+}
+
+.campus-network-heading > p {
+  max-width: 630px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.campus-network-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(255px, 3fr);
+  gap: clamp(20px, 3vw, 38px);
+  align-items: start;
+}
+
+.campus-network-map-panel,
+.campus-network-profiles {
+  min-width: 0;
+}
+
+.campus-network-map {
+  position: relative;
+  container-type: inline-size;
+}
+
+.campus-network-basemap {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.campus-network-pin {
+  --pin-color: var(--campus-pin-muted);
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.campus-network-pin-featured {
+  --pin-color: var(--red);
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+}
+
+.campus-network-dot {
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--paper);
+  border-radius: 50%;
+  background: var(--pin-color);
+  pointer-events: none;
+}
+
+.campus-network-pin-featured .campus-network-dot {
+  width: 15px;
+  height: 15px;
+  border-width: 2px;
+}
+
+.campus-network-pin[aria-pressed="true"] .campus-network-dot {
+  outline: 1px solid color-mix(in srgb, var(--pin-color) 70%, transparent);
+  outline-offset: 2px;
+}
+
+.campus-network-pin:focus-visible {
+  z-index: 3;
+  outline: 2px solid var(--deep);
+  outline-offset: 1px;
+}
+
+.campus-network-map-label {
+  position: absolute;
+  z-index: 3;
+  color: var(--deep);
+  font-size: clamp(10px, 1.85cqw, 13px);
+  font-weight: 650;
+  line-height: 1.15;
+  white-space: nowrap;
+  text-shadow: 1px 0 var(--paper), -1px 0 var(--paper), 0 1px var(--paper), 0 -1px var(--paper);
+  transform: translate(11px, -50%);
+  pointer-events: none;
+}
+
+.campus-network-map-label[data-campus="chongqing"] {
+  transform: translate(calc(-100% - 11px), -50%);
+}
+
+.campus-network-map-label[data-campus="wuhan"] {
+  transform: translate(-50%, 10px);
+}
+
+@container (max-width: 300px) {
+  .campus-network-map-label[data-campus="shanghai"] {
+    transform: translate(8px, -85%);
+  }
+}
+
+.campus-network-tooltip {
+  position: absolute;
+  z-index: 4;
+  width: max-content;
+  max-width: 132px;
+  padding: 5px 8px;
+  border-radius: 2px;
+  background: var(--deep);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  transform: translate(calc(-100% - 8px), calc(-100% - 10px));
+  pointer-events: none;
+}
+
+.campus-network-tooltip[data-campus="luzhou"] {
+  transform: translate(calc(-100% - 8px), 10px);
+}
+
+.campus-network-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px 16px;
+  padding-block: 10px 0;
+  border-top: 1px solid var(--campus-rule);
+}
+
+.campus-network-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.campus-network-legend li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.campus-network-legend li > span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--campus-pin-muted);
+}
+
+.campus-network-legend li:first-child > span {
+  background: var(--red);
+}
+
+.campus-network-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 9px;
+  color: var(--deep);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.campus-network-picker select {
+  width: min(195px, 100%);
+  min-height: 44px;
+  padding: 6px 8px;
+  border: 0;
+  border-bottom: 1px solid var(--campus-rule);
+  background: var(--paper);
+  color: var(--deep);
+  font: inherit;
+}
+
+.campus-network-picker select:focus-visible,
+.campus-network-explore:focus-visible,
+.campus-network-grid article:focus-visible {
+  outline: 2px solid var(--deep);
+  outline-offset: 3px;
+}
+
+/* Overlay the profiles so the tallest one establishes a stable layout. */
+.campus-network-profiles {
+  display: grid;
+  align-items: start;
+  border-top: 2px solid var(--red);
+}
+
+.campus-network-card {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.campus-network-card[aria-hidden="true"] {
+  visibility: hidden;
+}
+
+.campus-network-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.campus-network-media {
+  aspect-ratio: 16 / 9;
+  background: #ede6dc;
+}
+
+.campus-network-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.campus-network-card-body {
+  padding: 18px 0 0;
+}
+
+.campus-network-card h3 {
+  margin: 7px 0 6px;
+  font-size: clamp(33px, 3vw, 48px);
+  overflow-wrap: anywhere;
+}
+
+.campus-network-category {
+  margin: 0;
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.campus-network-location,
+.campus-network-levels,
+.campus-network-description {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.campus-network-location {
+  margin: 0;
+}
+
+.campus-network-levels {
+  margin: 13px 0 0;
+  padding-top: 11px;
+  border-top: 1px solid var(--campus-rule);
+}
+
+.campus-network-focus {
+  margin: 10px 0 4px;
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.campus-network-description {
+  margin: 0 0 15px;
+}
+
+.campus-network-explore {
+  gap: 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.campus-network-featured {
+  margin-top: clamp(32px, 4.5vw, 66px);
+  padding-top: clamp(24px, 3vw, 42px);
+  border-top: 1px solid var(--campus-rule);
+}
+
+.campus-network-featured h3 {
+  margin: 0 0 clamp(20px, 2.6vw, 32px);
+  font-size: clamp(36px, 4vw, 51px);
+}
+
+.campus-network-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(34px, 4vw, 56px) clamp(20px, 2.5vw, 32px);
+}
+
+.campus-network-grid article {
+  min-width: 0;
+  scroll-margin-top: 100px;
+}
+
+.campus-network-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.campus-network-grid h4 {
+  margin: 19px 0 7px;
+  font-size: 29px;
+}
+
+.campus-network-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.campus-network-grid .campus-network-grid-levels {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.campus-network-grid .campus-network-focus {
+  margin: 12px 0 5px;
+  color: var(--red);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.campus-network-disclaimer {
+  margin: clamp(32px, 4vw, 50px) 0 0;
+  padding-top: 17px;
+  border-top: 1px solid var(--campus-rule);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (min-width: 1001px) {
+  .campus-network-grid .campus-network-grid-levels { min-height: 40px; }
+}
+
+@media (max-width: 1000px) {
+  .campus-network-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 820px) {
+  .campus-network-layout { grid-template-columns: minmax(0, 1fr); }
+  .campus-network-media { aspect-ratio: 2 / 1; }
+  .campus-network-heading > p { font-size: 15px; }
+}
+
+@media (pointer: coarse) {
+  .campus-network-pin { width: 36px; height: 36px; }
+  .campus-network-pin-featured { width: 44px; height: 44px; }
+}
+
+@media (max-width: 560px) {
+  .campus-network { padding-inline: 20px; }
+  .campus-network-card-body { padding-right: 44px; }
+  .campus-network-grid { grid-template-columns: minmax(0, 1fr); }
+  .campus-network-controls { padding-top: 8px; }
+}
+
+.campus-network-external {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  gap: 6px;
+  min-height: 36px;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-decoration-color: #ad827f;
+  text-underline-offset: 4px;
+}
+
+.campus-network-external:hover {
+  text-decoration-color: currentColor;
+}
+
+.campus-network-external:focus-visible {
+  outline: 2px solid var(--deep);
+  outline-offset: 2px;
+}
+
+.campus-network-card-link {
+  margin-top: 6px;
+}
+
+.campus-network-directory {
+  margin-top: 8px;
+}
+
+.campus-network-school-info {
+  margin: 13px 0 14px;
+  padding-top: 11px;
+  border-top: 1px solid var(--campus-rule);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.campus-network-actions {
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+}
+
+
+@media (pointer: coarse) {
+  .campus-network-external { min-height: 44px; }
+}
