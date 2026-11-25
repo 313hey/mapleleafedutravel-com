@@ -46,7 +46,12 @@
 .accommodation-gallery figure { margin: 0; min-width: 0; }
 .accommodation-gallery .campus-photo-button { aspect-ratio: 4 / 3; }
 .accommodation-gallery figcaption { margin-top: 10px; color: var(--deep); font-size: 13px; line-height: 1.5; }
-.accommodation-planning { background: var(--cream); }
+.accommodation-planning .section-label { justify-content: center; color: #f2d79b; }
+.accommodation-planning .section-label span { background: #f2d79b; }
+.accommodation-planning h2 { max-width: 900px; margin: 20px auto 18px; color: #fff8e8; }
+.accommodation-planning > p { max-width: 660px; margin: 0 auto 20px; color: rgba(255,255,255,.88); }
+.accommodation-planning .accommodation-note { margin-bottom: 30px; color: rgba(255,248,232,.76); font-size: 13px; }
+.accommodation-planning .button-primary { border: 1px solid rgba(242,215,155,.42); background: #fff8e8; color: var(--red); }
 .accommodation-note { font-size: 13px; }
 .accommodation-planning .button-primary { margin-top: 18px; }
 .accommodation-page a:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }

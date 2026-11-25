@@ -37,7 +37,7 @@ export default function AccommodationPage() {
             label={campus.name + ' accommodation and facilities'} photos={campus.photos} />
         </section>
       ))}
-      <section className="accommodation-planning">
+      <section className="accommodation-planning immersion-cta">
         <div className="section-label"><span aria-hidden="true" /><p>Plan Your Stay</p></div>
         <h2>Accommodation for Your Student Group</h2>
         <p>Campus boarding or selected hotel accommodation may be arranged according to your destination, group profile and travel dates. Room type, occupancy, bathroom arrangements, meals and supervision will be confirmed in your final proposal.</p>
