@@ -138,7 +138,7 @@ const navItems = [
   {
     label: 'PROGRAMS',
     items: [
-      'School Immersion Programs',
+      'School Immersion Program',
       'Travel to China Program',
       'Chinese Language Programs',
       'Global Education Trips',
@@ -452,7 +452,7 @@ function TestimonialCard({ item }: { item: (typeof testimonials)[number] }) {
 
 function Nav({ schoolImmersion = false }: { schoolImmersion?: boolean }) {
   const getDropdownHref = (dropdownItem: string) => {
-    if (dropdownItem === 'School Immersion Programs') return '/programs/school-immersion'
+    if (dropdownItem === 'School Immersion Program' || dropdownItem === 'School Immersion Programs') return '/programs/school-immersion'
     if (dropdownItem === 'Travel to China Program') return '/programs/travel-to-china'
     if (dropdownItem === 'Chinese Language Programs') return '/programs/chinese-language'
     if (schoolImmersion && dropdownItem === 'FAQs') return '#school-immersion-faq'
@@ -468,7 +468,7 @@ function Nav({ schoolImmersion = false }: { schoolImmersion?: boolean }) {
       </a>
       <nav className="nav-links school-immersion-nav-links" aria-label="Primary navigation">
         <ul className="nav-list">
-          {navItems.filter((item) => !['LOCATIONS', 'CHINESE COURSES', 'PROGRAMS'].includes(item.label)).map((item) => (
+          {navItems.filter((item) => !['LOCATIONS', 'CHINESE COURSES'].includes(item.label)).map((item) => (
             <li className="nav-item" key={item.label}>
               {'href' in item ? (
                 <a className="nav-trigger" href={item.href}>
@@ -485,6 +485,8 @@ function Nav({ schoolImmersion = false }: { schoolImmersion?: boolean }) {
                   <div className="nav-dropdown">
                     {(item.label === 'SERVICES'
                       ? item.items.filter((dropdownItem) => !['Teaching Team', 'Course Materials'].includes(dropdownItem))
+                      : item.label === 'PROGRAMS'
+                        ? item.items.filter((dropdownItem) => ['School Immersion Program', 'Travel to China Program', 'Chinese Language Programs'].includes(dropdownItem))
                       : item.label === 'ABOUT'
                         ? item.items.filter((dropdownItem) => dropdownItem !== 'Maple Leaf K–12 Chinese')
                         : item.items
